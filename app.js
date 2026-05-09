@@ -1,0 +1,1183 @@
+const RATE = 0.915;
+const toSGD = (aud) => (aud * RATE).toFixed(0);
+
+const DAYS = [
+{
+  num: 1, date: "Mon, 25 May", title: "Arrival Day", theme: "Welcome to Melbourne",
+  weather: { high: 15, low: 9, icon: "⛅", desc: "Partly Cloudy, Breezy" },
+  activities: [
+    {
+      time: "02:30", end: "11:45", title: "Scoot TR58: Singapore → Melbourne",
+      type: "transport",
+      desc: "Depart Singapore Changi Terminal 1 at 02:30. Boeing 787-9, 7h15m flight. Arrive Melbourne Tullamarine Terminal 2 at 11:45 local time. Budget food on Scoot is not included — pre-book meals on the Scoot app or eat at Changi before boarding.",
+      atmosphere: [],
+      img: "https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Melbourne+Airport+Tullamarine",
+      cost: { aud: 0, note: "Pre-booked" },
+      transport: []
+    },
+    {
+      time: "12:15", title: "Clear Immigration & Collect Luggage",
+      type: "transport",
+      desc: "Melbourne immigration is generally fast for Singapore passports (ETA pre-approved). Allow 30 min for queue + luggage carousel at T2. Free WiFi at MEL airport — connect immediately to request your ride.",
+      atmosphere: ["busy"],
+      img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Melbourne+Airport+Terminal+2",
+      cost: { aud: 0 },
+      transport: [
+        { mode: "Uber/DiDi", cost: "A$45–55", time: "30–40 min", note: "Best value for 2 pax. Request from T2 rideshare zone." },
+        { mode: "SkyBus", cost: "A$49.80 (2 pax)", time: "30 min", note: "To Southern Cross Station, then walk or tram to hotel." },
+        { mode: "Taxi", cost: "A$60–75", time: "30–40 min", note: "Metered. Airport surcharge A$4.78." }
+      ]
+    },
+    {
+      time: "13:15", title: "Arrive CBD & Check In",
+      type: "transport",
+      desc: "Head to your apartment. Collins House Apartments by CLLIX is at 464 Collins Street — right in the CBD, 5-min walk from Flinders Street Station. Check-in from 2:00 PM. If early, store bags at reception and explore.",
+      atmosphere: [],
+      img: "https://images.unsplash.com/photo-1524820197278-540916411e20?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Collins+House+Apartments+CLLIX+464+Collins+Street+Melbourne",
+      cost: { aud: 200, note: "~A$200–350/night for 1BR apartment" },
+      booking: "https://www.cllix.com/collins-house-apartments/",
+      transport: []
+    },
+    {
+      time: "14:30", title: "Lunch at Degraves Street",
+      type: "food",
+      desc: "Melbourne’s most famous laneway café strip. Cobblestoned, narrow, lined with tiny espresso bars, cafés, and bakeries. Grab a flat white and a toastie or eggs benedict. Try Degraves Espresso Bar or Journal Café. This is Melbourne coffee culture distilled.",
+      atmosphere: ["artsy", "touristy", "foodie"],
+      img: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Degraves+Street+Melbourne",
+      cost: { aud: 25, note: "A$20–30 pp for coffee + meal" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "8 min from Collins House", note: "" }
+      ]
+    },
+    {
+      time: "15:30", title: "Flinders Street Station",
+      type: "culture",
+      desc: "Melbourne’s most iconic building. The butter-yellow Edwardian Baroque facade with its famous row of clocks is THE image of Melbourne. Best photographed from the steps of Federation Square across the street. Stunning at dusk when the facade is illuminated. The station is fully operational — 35+ million passengers annually.",
+      atmosphere: ["historic", "busy", "touristy"],
+      img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Flinders+Street+Station+Melbourne",
+      cost: { aud: 0, note: "Free to visit" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "5 min from Degraves St", note: "" }
+      ]
+    },
+    {
+      time: "16:00", title: "Federation Square & ACMI",
+      type: "culture",
+      desc: "Melbourne’s cultural heart. Striking postmodern architecture of glass, zinc, and sandstone shards. Home to ACMI (Australian Centre for the Moving Image, free entry), The Ian Potter Centre: NGV Australia (free), and Koorie Heritage Trust. Buskers, pop-up markets, and the big screen showing live sports. The plaza buzzes with energy year-round.",
+      atmosphere: ["artsy", "touristy", "multicultural", "busy"],
+      img: "https://images.unsplash.com/photo-1598881034666-15b0c4b1601a?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Federation+Square+Melbourne",
+      cost: { aud: 0, note: "Free (ACMI + Ian Potter Centre)" },
+      booking: "https://www.acmi.net.au/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "1 min from Flinders St Station", note: "Directly opposite" }
+      ]
+    },
+    {
+      time: "17:00", title: "Hosier Lane Street Art",
+      type: "culture",
+      desc: "A narrow cobblestone laneway completely blanketed in street art, graffiti, murals, and paste-ups. The art changes constantly — new pieces appear daily. Look for Matt Adnate’s towering 23-metre portrait of an Indigenous boy on McDonald House. The lane smells of spray paint and hums with photographers. Also explore nearby AC/DC Lane.",
+      atmosphere: ["artsy", "bohemian", "grungy", "touristy"],
+      img: "https://images.unsplash.com/photo-1562932831-afcfe735a7e5?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Hosier+Lane+Melbourne",
+      cost: { aud: 0, note: "Free" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "1 min from Fed Square", note: "" }
+      ]
+    },
+    {
+      time: "17:30", title: "Southbank Promenade Sunset Walk",
+      type: "culture",
+      desc: "Stroll along the Yarra River from Princes Bridge toward the Arts Centre Melbourne spire. The promenade is lined with restaurants, bars, and public art. At dusk, the city skyline reflects in the river. Fire pillars on the Crown Casino side erupt hourly after dark. Atmospheric, romantic, and quintessentially Melbourne.",
+      atmosphere: ["romantic", "scenic", "relaxed"],
+      img: "https://images.unsplash.com/photo-1545044846-351ba102b6d5?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Southbank+Promenade+Melbourne",
+      cost: { aud: 0, note: "Free" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "5 min from Hosier Lane", note: "Cross Princes Bridge" }
+      ]
+    },
+    {
+      time: "18:30", title: "Dinner at Chin Chin",
+      type: "food",
+      desc: "Southeast Asian-inspired restaurant on Flinders Lane. Bold, punchy flavours — pad see ew, green papaya salad, whole roasted cauliflower, betel leaf wraps. No reservations taken, walk-in only. Expect a 20–40 min wait (grab a drink at GoGo Bar upstairs while waiting). Always buzzing, loud, energetic. A Melbourne institution.",
+      atmosphere: ["busy", "foodie", "multicultural"],
+      img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Chin+Chin+Melbourne+Flinders+Lane",
+      cost: { aud: 50, note: "A$40–60 pp with drinks" },
+      booking: "https://www.chinchinrestaurant.com.au/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "10 min from Southbank", note: "" }
+      ]
+    },
+    {
+      time: "20:00", title: "Return to Hotel & Rest",
+      type: "transport",
+      desc: "Walk back to Collins House (10 min). Rest and recover from the red-eye flight. Set your alarm for an early market morning tomorrow.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 0 },
+      transport: []
+    }
+  ],
+  dayCost: { transport: 50, food: 75, activities: 0, accommodation: 250 }
+},
+{
+  num: 2, date: "Tue, 26 May", title: "Melbourne Culture & Markets", theme: "Queen Vic, Chinatown, NGV & Botanic Gardens",
+  weather: { high: 15, low: 8, icon: "☁️", desc: "Overcast, Cool" },
+  activities: [
+    {
+      time: "08:30", title: "Breakfast at Hotel",
+      type: "food",
+      desc: "Self-catering in your fully equipped apartment kitchen. The Woolworths Metro on Collins Street (5 min walk) stocks everything you need. Or grab a takeaway flat white and pastry from Patricia Coffee Brewers on Little Bourke Street.",
+      atmosphere: ["relaxed"],
+      img: "",
+      map: "https://maps.google.com/?q=Patricia+Coffee+Brewers+Melbourne",
+      cost: { aud: 15, note: "A$10–20 pp" },
+      transport: []
+    },
+    {
+      time: "09:30", title: "Queen Victoria Market",
+      type: "food",
+      desc: "Melbourne’s 145-year-old market. Seven hectares of fresh produce, gourmet food, clothing, and souvenirs. The Meat & Fish Hall has sashimi-grade yellowfin, Coffin Bay oysters, live mud crabs. Dairy Hall stocks 50+ Australian artisan cheeses. Must-eat: American Doughnut Kitchen (jam doughnuts since the 1950s), The Bund (Shanghai dumplings), boreks (pan-fried flatbread). Open Tue/Thu/Fri/Sat/Sun.",
+      atmosphere: ["busy", "multicultural", "foodie", "local"],
+      img: "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Queen+Victoria+Market+Melbourne",
+      cost: { aud: 20, note: "A$15–30 for tastings & snacks" },
+      booking: "https://qvm.com.au/",
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "8 min", note: "Any tram on Elizabeth St, Free Tram Zone" },
+        { mode: "Walk", cost: "Free", time: "15 min from Collins House", note: "" }
+      ]
+    },
+    {
+      time: "11:00", title: "State Library of Victoria",
+      type: "culture",
+      desc: "One of the world’s most beautiful libraries. The La Trobe Reading Room is a breathtaking octagonal domed space flooded with natural light. Free entry. Small exhibitions rotate. The front lawn is a favourite local hangout. Founded 1854 — one of Australia’s oldest cultural institutions.",
+      atmosphere: ["quiet", "historic", "artsy"],
+      img: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=State+Library+of+Victoria+Melbourne",
+      cost: { aud: 0, note: "Free" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "8 min from QVM", note: "" }
+      ]
+    },
+    {
+      time: "11:45", title: "Chinatown Melbourne",
+      type: "culture",
+      desc: "The oldest continuous Chinese settlement outside Asia, established 1850s during the Gold Rush. Walk under the ornate guardian archways on Little Bourke Street. Herbal medicine shops, bubble tea stalls, roast duck hanging in windows, neon signs. At night it transforms into a late-night dumpling and noodle paradise. Also home to secret jazz bars and speakeasies.",
+      atmosphere: ["multicultural", "busy", "foodie", "historic"],
+      img: "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Chinatown+Melbourne+Little+Bourke+Street",
+      cost: { aud: 0, note: "Free to explore" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "5 min from State Library", note: "" }
+      ]
+    },
+    {
+      time: "12:30", title: "Lunch at HuTong Dumpling Bar",
+      type: "food",
+      desc: "Legendary xiao long bao in the heart of Chinatown. Hand-folded soup dumplings, pan-fried pork buns, and dan dan noodles. Small, crowded space with communal tables — the food is worth the squeeze. Often has a queue at peak lunch. Alternative: Flower Drum for upscale Cantonese (booking essential, A$100+ pp).",
+      atmosphere: ["busy", "foodie", "local"],
+      img: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=HuTong+Dumpling+Bar+Melbourne",
+      cost: { aud: 30, note: "A$25–40 pp" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "2 min", note: "On Market Lane, Chinatown" }
+      ]
+    },
+    {
+      time: "14:00", title: "NGV International (National Gallery of Victoria)",
+      type: "culture",
+      desc: "Australia’s oldest and most visited art gallery. The permanent collection is FREE and world-class: European Old Masters, Asian art, photography, Australian art. The water wall entrance is iconic. Allow 2–3 hours. Check for paid special exhibitions. The CARTIER: Melbourne Winter Masterpieces show opens June 12 — just after your trip.",
+      atmosphere: ["quiet", "artsy", "upscale"],
+      img: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=NGV+International+180+St+Kilda+Road+Melbourne",
+      cost: { aud: 0, note: "Free (permanent collection)" },
+      booking: "https://www.ngv.vic.gov.au/",
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "12 min", note: "Any tram on St Kilda Rd from Flinders St" },
+        { mode: "Uber", cost: "A$10–15", time: "5 min", note: "" }
+      ]
+    },
+    {
+      time: "16:30", title: "Royal Botanic Gardens",
+      type: "nature",
+      desc: "38 hectares of stunning landscaped gardens along the south bank of the Yarra. Ancient trees, ornamental lakes, fern gullies, a herb garden, a rainforest walk. In late May, autumn foliage colours the gardens in gold and red. A peaceful inner-city oasis. Free guided walks available (1.5 hours with passionate volunteer guides). Aboriginal Heritage Walk is excellent but must be pre-booked.",
+      atmosphere: ["quiet", "scenic", "romantic", "relaxed"],
+      img: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Royal+Botanic+Gardens+Melbourne",
+      cost: { aud: 0, note: "Free" },
+      booking: "https://www.rbg.vic.gov.au/melbourne-gardens/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "8 min from NGV", note: "Through Alexandra Gardens" }
+      ]
+    },
+    {
+      time: "17:30", title: "Shrine of Remembrance",
+      type: "culture",
+      desc: "Victoria’s war memorial, modelled on the Mausoleum at Halicarnassus. The Sanctuary interior houses the Stone of Remembrance, lit by a shaft of sunlight on Remembrance Day. The rooftop balcony offers sweeping 360° views of the Melbourne skyline and gardens. Free guided tours every hour (45 min, A$20). The crypt and galleries are deeply moving.",
+      atmosphere: ["quiet", "historic", "scenic"],
+      img: "https://images.unsplash.com/photo-1584463699057-a0c95e8395e5?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Shrine+of+Remembrance+Melbourne",
+      cost: { aud: 0, note: "Free (guided tour A$20 pp optional)" },
+      booking: "https://www.shrine.org.au/plan-your-visit",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "10 min from Botanic Gardens", note: "" }
+      ]
+    },
+    {
+      time: "19:00", title: "Dinner at Tipo 00",
+      type: "food",
+      desc: "Award-winning handmade pasta restaurant on Little Bourke Street. Every strand of spaghetti, every sheet of lasagna is made fresh daily. The malfaldine with duck ragù is legendary. Intimate space, open kitchen, impressive wine list focused on Italian varietals. Book ahead — very popular. A$60–80 pp for pasta + wine.",
+      atmosphere: ["foodie", "romantic", "upscale"],
+      img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Tipo+00+361+Little+Bourke+Street+Melbourne",
+      cost: { aud: 70, note: "A$60–80 pp with wine" },
+      booking: "https://tipo00.com.au/",
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "15 min from Shrine", note: "" }
+      ]
+    }
+  ],
+  dayCost: { transport: 0, food: 115, activities: 0, accommodation: 250 }
+},
+{
+  num: 3, date: "Wed, 27 May", title: "Great Ocean Road Day 1", theme: "Torquay → Anglesea → Lorne → Kennett River → Apollo Bay",
+  weather: { high: 14, low: 9, icon: "🌧️", desc: "Showers & Wind, 13–15°C" },
+  activities: [
+    {
+      time: "07:30", title: "Private Driver Pickup from Hotel",
+      type: "transport",
+      desc: "Your private driver collects you from Collins House. Recommended: Bilby Tours (A$2,199 for 2-day private tour, 1–6 pax) or Melbourne Touring Company (A$2,799 for 2-day, Mercedes upgrade +A$250). Price includes driver-guide, fuel, tolls, parking, national park entry. Meals not included. Dress in warm layers — coastal wind will be cold.",
+      atmosphere: [],
+      img: "https://images.unsplash.com/photo-1449965408869-ebd3fee49e6e?w=600&h=360&fit=crop",
+      map: "",
+      cost: { aud: 1100, note: "A$1,100 (half of 2-day A$2,199 Bilby Tours)" },
+      booking: "https://bilbytravel.com.au/tours/great-ocean-road-private-tour/",
+      transport: []
+    },
+    {
+      time: "09:15", title: "Torquay — Start of the Great Ocean Road",
+      type: "nature",
+      desc: "The official beginning of the Great Ocean Road. Torquay is the birthplace of Rip Curl and Quiksilver — surf culture runs deep here. Browse the Australian National Surfing Museum if time permits. The town has a laidback, beachy vibe even in winter.",
+      atmosphere: ["coastal", "relaxed", "local"],
+      img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Torquay+Great+Ocean+Road+Victoria",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "09:45", title: "Bells Beach Lookout",
+      type: "nature",
+      desc: "One of the world’s most famous surf breaks. High clifftop lookouts give dramatic views of the reef break below. Home of the Rip Curl Pro, the world’s longest-running surf competition. Even if there are no waves, the raw beauty of the sandstone cliffs and crashing Southern Ocean swells is breathtaking. In late May, you may have the lookout to yourselves.",
+      atmosphere: ["scenic", "quiet", "coastal"],
+      img: "https://images.unsplash.com/photo-1502680390548-bdbac40e7a78?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Bells+Beach+Victoria",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "10:15", title: "Anglesea Golf Club — Wild Kangaroo Encounter",
+      type: "nature",
+      desc: "~300 wild Eastern Grey Kangaroos live on this golf course. Guided Kangaroo Tours (25 min) run every 30 min. Walk among the kangaroos on the fairways with a guide who explains their behaviour. Incredibly close encounters — some roos are less than 2 metres away. A$17/adult. Late May: kangaroos are present year-round; quieter than summer.",
+      atmosphere: ["wildlife", "quiet", "family"],
+      img: "https://images.unsplash.com/photo-1578326457399-3b34dbbf23b8?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Anglesea+Golf+Club+45+Golf+Links+Road+Anglesea+VIC",
+      cost: { aud: 17, note: "A$17 pp" },
+      booking: "https://www.angleseagolfclub.com.au/cms/kangaroo-tours/",
+      transport: []
+    },
+    {
+      time: "11:15", title: "Split Point Lighthouse, Aireys Inlet",
+      type: "nature",
+      desc: "The white lighthouse from the TV show “Round the Twist.” Operational since 1891, sitting on dramatic clifftops above Eagle Rock Marine Sanctuary. Multiple viewing platforms. In late May, the moody sky and crashing waves make this atmospheric and beautiful. Grab coffee at the small café next door.",
+      atmosphere: ["scenic", "quiet", "historic", "coastal"],
+      img: "https://images.unsplash.com/photo-1498931299472-f7a63a5a1cfa?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Split+Point+Lighthouse+Aireys+Inlet",
+      cost: { aud: 0, note: "Free (exterior). Tours ~A$15 when available." },
+      transport: []
+    },
+    {
+      time: "12:30", title: "Lunch at Lorne",
+      type: "food",
+      desc: "Charming seaside town nestled between the Otway Ranges and the ocean. In late May, the tourist crowds have vanished and Lorne feels like a quiet coastal village. Try Swing Bridge Café for seafood chowder, or Lorne Fish and Chips. Teddy’s Lookout (5-min drive above town) offers one of the GOR’s best panoramic views.",
+      atmosphere: ["coastal", "relaxed", "scenic", "quiet"],
+      img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Lorne+Victoria+Australia",
+      cost: { aud: 30, note: "A$25–40 pp for lunch" },
+      transport: []
+    },
+    {
+      time: "14:30", title: "Kennett River Koala Walk — Wild Koalas!",
+      type: "nature",
+      desc: "THE best place to see wild koalas on the Great Ocean Road. Walk along Grey River Road and look up into the eucalyptus forks — round grey balls of fluff wedged into tree branches. Late May is actually the BEST time: bare branches make koalas much easier to spot, and they descend lower for warmth. Also expect King Parrots and Crimson Rosellas — often so tame they’ll land on your arm. Allow 45–60 min. Otway koala population: ~20,000.",
+      atmosphere: ["wildlife", "quiet", "scenic"],
+      img: "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Kennett+River+Victoria+Koala+Walk",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "16:00", title: "Apollo Bay — Marriners Lookout Sunset",
+      type: "nature",
+      desc: "End the day at Apollo Bay, a laidback fishing town with a long curved beach. Climb to Marriners Lookout (steep 5-min walk) for panoramic views of the bay, the ocean, and the rolling green Otway hills. Sunset ~5:10 PM in late May. Beautiful and often deserted in winter.",
+      atmosphere: ["scenic", "quiet", "coastal", "romantic"],
+      img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Marriners+Lookout+Apollo+Bay+Victoria",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "17:30", title: "Check in to Overnight Accommodation",
+      type: "transport",
+      desc: "Overnight at Anchors Port Campbell (boutique coastal villas, ~A$250/night, rated 10.0/10 on Booking.com) or Waves Luxury Suites in Port Campbell (~A$150/night, adults-only). Both offer fireplaces, ocean views, and intimate atmosphere. Your driver will take you from Apollo Bay to Port Campbell (~1.5h drive through the Otways).",
+      atmosphere: ["romantic", "relaxed", "scenic"],
+      img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Anchors+Port+Campbell+Victoria",
+      cost: { aud: 250, note: "A$150–310/night" },
+      booking: "https://www.anchorsportcampbell.com.au/",
+      transport: []
+    },
+    {
+      time: "19:00", title: "Dinner at 12 Rocks Café Bar",
+      type: "food",
+      desc: "Cosy restaurant in Port Campbell village. Locally sourced seafood, steaks, and wine. In winter, the fireplace is going and the atmosphere is warm and inviting. One of the few dining options in town — book ahead.",
+      atmosphere: ["relaxed", "local", "foodie"],
+      img: "",
+      map: "https://maps.google.com/?q=12+Rocks+Cafe+Bar+Port+Campbell",
+      cost: { aud: 50, note: "A$40–60 pp" },
+      transport: []
+    }
+  ],
+  dayCost: { transport: 1100, food: 80, activities: 17, accommodation: 250 }
+},
+{
+  num: 4, date: "Thu, 28 May", title: "Great Ocean Road Day 2", theme: "Cape Otway → Twelve Apostles → Loch Ard Gorge → Return",
+  weather: { high: 13, low: 8, icon: "🌬️", desc: "Windy, Partly Cloudy, 13°C" },
+  activities: [
+    {
+      time: "08:00", title: "Breakfast at Accommodation",
+      type: "food",
+      desc: "Enjoy a relaxed breakfast at your Port Campbell accommodation. If self-catering, the local general store has basics. Or walk to the Port Campbell Visitor Centre café.",
+      atmosphere: ["relaxed"],
+      img: "",
+      map: "",
+      cost: { aud: 15, note: "A$10–20 pp" },
+      transport: []
+    },
+    {
+      time: "09:00", title: "Cape Otway Lighthouse",
+      type: "nature",
+      desc: "Australia’s oldest surviving mainland lighthouse (1848), known as the “Beacon of Hope.” Heritage precinct includes the original Telegraph Station, WWII Radar Bunker, and keeper’s quarters. Koalas are incredibly common along Lighthouse Road — the Manna Gum trees here are a koala motorway. Late May is the START of whale season: watch for Southern Right Whales breaching offshore. Entry currently reduced to A$11/adult during lighthouse tower restoration.",
+      atmosphere: ["historic", "wildlife", "scenic", "quiet"],
+      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Cape+Otway+Lightstation+Victoria",
+      cost: { aud: 11, note: "A$11 pp (reduced during restoration)" },
+      booking: "https://www.lightstation.com/lightstation-tickets/",
+      transport: []
+    },
+    {
+      time: "10:30", title: "Maits Rest Rainforest Walk",
+      type: "nature",
+      desc: "Easy 30-minute circuit boardwalk through ancient Otway Rainforest. Towering Myrtle Beech trees draped in moss, tree ferns taller than you, the sound of dripping water. In winter, the forest is lush, green, and mystical. The boardwalk is fully accessible. A magical detour from the coastal scenery.",
+      atmosphere: ["quiet", "scenic"],
+      img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Maits+Rest+Rainforest+Walk+Great+Otway+National+Park",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "11:15", title: "Gibson Steps — Descend the Cliffs",
+      type: "nature",
+      desc: "Steep steps carved into the 70-metre cliff face lead down to the beach at the base of the Apostles formations. Stand on the sand and crane your neck up at two towering limestone sea stacks. The scale is humbling. Check tide times — the beach floods at high tide. Allow 20–30 min.",
+      atmosphere: ["scenic", "coastal", "quiet"],
+      img: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Gibson+Steps+Port+Campbell+National+Park",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "12:00", title: "The Twelve Apostles",
+      type: "nature",
+      desc: "THE highlight of the entire trip. Eight remaining limestone sea stacks rising 45 metres from the Southern Ocean, sculpted by 10–20 million years of erosion. The lookouts are windswept and dramatic. In late May, you may have them nearly to yourself — in summer, 15,000 people visit daily. Moody winter skies and dramatic light make for the best photography. At dusk, Little Penguins sometimes waddle ashore on the beach below. Open 24/7. Free entry.",
+      atmosphere: ["scenic", "quiet", "coastal"],
+      img: "https://images.unsplash.com/photo-1494791368093-85217fbbf8de?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Twelve+Apostles+Port+Campbell+National+Park+Victoria",
+      cost: { aud: 0, note: "Free, open 24/7" },
+      transport: []
+    },
+    {
+      time: "13:00", title: "Loch Ard Gorge",
+      type: "nature",
+      desc: "A spectacular gorge formed by millions of years of erosion, named after the clipper ship Loch Ard that wrecked here in 1878 (52 died, only 2 survived — both teenagers). Self-guided walks explain the shipwreck history, geology, and coastal ecology. The turquoise water in the gorge is otherworldly. Note: beach access steps are currently closed due to geological instability, but the clifftop views are still breathtaking.",
+      atmosphere: ["historic", "scenic", "coastal", "quiet"],
+      img: "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Loch+Ard+Gorge+Victoria",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "14:00", title: "Lunch at Port Campbell",
+      type: "food",
+      desc: "Return to Port Campbell for lunch before heading back. Try 12 Rocks again, or the Port Campbell Takeaway for casual fish & chips overlooking the bay.",
+      atmosphere: ["relaxed", "coastal", "local"],
+      img: "",
+      map: "https://maps.google.com/?q=Port+Campbell+Victoria",
+      cost: { aud: 25, note: "A$20–30 pp" },
+      transport: []
+    },
+    {
+      time: "15:00", title: "London Arch",
+      type: "nature",
+      desc: "Formerly “London Bridge” until part of it collapsed in 1990, stranding two tourists on the remaining arch (they were rescued by helicopter). Now a dramatic natural arch perched over crashing waves. A powerful reminder of the coastline’s relentless erosion.",
+      atmosphere: ["scenic", "coastal", "quiet"],
+      img: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=London+Arch+Great+Ocean+Road+Victoria",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "15:30", title: "The Grotto",
+      type: "nature",
+      desc: "A natural sinkhole formation with the ocean visible through a natural rock frame. Short walk from the car park. A quieter stop that most group tours skip. Beautiful for photos.",
+      atmosphere: ["scenic", "quiet", "coastal"],
+      img: "",
+      map: "https://maps.google.com/?q=The+Grotto+Great+Ocean+Road+Victoria",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "16:00", title: "Return Drive to Melbourne (Inland Route)",
+      type: "transport",
+      desc: "The inland route via Colac and the Princes Freeway is ~3 hours to Melbourne CBD. Faster and less winding than the coast road. Your private driver handles everything. Arrive back ~19:00.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 0, note: "Included in 2-day tour price" },
+      transport: []
+    },
+    {
+      time: "19:30", title: "Dinner at Supernormal",
+      type: "food",
+      desc: "Andrew McConnell’s pan-Asian restaurant on Flinders Lane. Lobster rolls, prawn toast, dumplings, bao, and charcoal grilled dishes. Slick, modern interior with a long bar. A$50–75 pp. Walk-ins welcome.",
+      atmosphere: ["foodie", "upscale", "busy"],
+      img: "",
+      map: "https://maps.google.com/?q=Supernormal+Flinders+Lane+Melbourne",
+      cost: { aud: 60, note: "A$50–75 pp" },
+      booking: "https://supernormal.net.au/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "8 min from Collins House", note: "" }
+      ]
+    }
+  ],
+  dayCost: { transport: 1100, food: 100, activities: 11, accommodation: 250 }
+},
+{
+  num: 5, date: "Fri, 29 May", title: "Phillip Island Wildlife", theme: "Penguins, Koalas, Seals & Coastal Wildlife",
+  weather: { high: 14, low: 8, icon: "⛅", desc: "Partly Cloudy, Cool" },
+  activities: [
+    {
+      time: "08:00", title: "Breakfast at Hotel & Prepare for a Long Day",
+      type: "food",
+      desc: "Have a good breakfast — it’s a full 12–14 hour day. Pack warm layers for the evening Penguin Parade (you’ll be sitting outdoors at sunset in 8°C). Beanie, scarf, and gloves recommended.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 15 },
+      transport: []
+    },
+    {
+      time: "09:00", title: "Depart Melbourne for Phillip Island",
+      type: "transport",
+      desc: "Private transfer or guided tour bus (Localing Tours private: A$2,140 for 2 with dinner included; or Sightseeing Tours Australia from A$125 pp including Penguin Parade ticket). Journey is ~2 hours via the M1 and Bass Highway, crossing the bridge to Phillip Island.",
+      atmosphere: [],
+      img: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Phillip+Island+Victoria",
+      cost: { aud: 125, note: "From A$125 pp (guided tour) or A$2,140 (private)" },
+      booking: "https://www.penguins.org.au/",
+      transport: [
+        { mode: "Guided Tour", cost: "A$125–180 pp", time: "2h drive", note: "Includes hotel pickup & Penguin Parade ticket" },
+        { mode: "Private (Localing)", cost: "A$2,140 for 2", time: "2h drive", note: "Includes dinner, private guide, all entries" }
+      ]
+    },
+    {
+      time: "11:00", title: "Churchill Island Heritage Farm",
+      type: "culture",
+      desc: "A working heritage farm connected to Phillip Island by a short bridge. Shearing demonstrations, cow milking, and heritage gardens. Peaceful and pastoral. Beautiful grounds with views across Western Port Bay. Allow 1–1.5 hours.",
+      atmosphere: ["quiet", "historic", "family", "scenic"],
+      img: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Churchill+Island+Heritage+Farm+Victoria",
+      cost: { aud: 14, note: "A$13.50 pp (or included in 3 Parks Pass A$59.50 pp)" },
+      booking: "https://www.penguins.org.au/attractions/churchill-island/",
+      transport: []
+    },
+    {
+      time: "12:30", title: "Lunch at Cowes",
+      type: "food",
+      desc: "Phillip Island’s main town. A small, friendly seaside village with fish & chip shops, bakeries, and cafes along Thompson Avenue. Try the Madcowes Café or Isola di Capri for Italian. The beach is sheltered and pleasant even in winter.",
+      atmosphere: ["local", "relaxed", "coastal"],
+      img: "",
+      map: "https://maps.google.com/?q=Cowes+Phillip+Island+Victoria",
+      cost: { aud: 25, note: "A$20–30 pp" },
+      transport: []
+    },
+    {
+      time: "14:00", title: "Koala Conservation Centre",
+      type: "nature",
+      desc: "Elevated boardwalks through natural bushland bring you to eye-level with koalas in their natural habitat. Rangers share fascinating facts about koala biology, diet, and conservation. You’ll get very close — some koalas sit at arm’s length. Allow 1 hour.",
+      atmosphere: ["wildlife", "quiet", "family"],
+      img: "https://images.unsplash.com/photo-1579168730446-c696d62a2ea7?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Koala+Conservation+Centre+Phillip+Island",
+      cost: { aud: 14, note: "A$13.20 pp (or included in 3 Parks Pass)" },
+      booking: "https://www.penguins.org.au/attractions/koala-conservation-reserve/",
+      transport: []
+    },
+    {
+      time: "15:15", title: "The Nobbies & Seal Rocks",
+      type: "nature",
+      desc: "A windswept boardwalk along dramatic cliff tops at the western tip of Phillip Island. From here, you can see Seal Rocks — home to Australia’s largest fur seal colony (~25,000 seals). Bring binoculars. The boardwalk views are spectacular. Free entry. Allow 45 min.",
+      atmosphere: ["scenic", "coastal", "wildlife", "quiet"],
+      img: "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=The+Nobbies+Phillip+Island",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "16:15", title: "Penguin Parade — Underground Viewing",
+      type: "nature",
+      desc: "The main event. Every evening at sunset, hundreds of Little (Fairy) Penguins waddle up the beach from the ocean to their burrows in the sand dunes. In late May, sunset is ~5:15 PM. Arrive early to get settled. Underground Viewing (A$103 pp) lets you watch through glass panels at penguin eye-level as they walk right past you — an incredible, intimate experience. No cameras or recording devices allowed. Dress VERY warm (8°C with wind chill).",
+      atmosphere: ["wildlife", "scenic", "quiet", "romantic"],
+      img: "https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Phillip+Island+Penguin+Parade",
+      cost: { aud: 103, note: "A$103 pp (Underground Viewing)" },
+      booking: "https://bookings.penguins.org.au/",
+      transport: []
+    },
+    {
+      time: "18:00", title: "Return to Melbourne",
+      type: "transport",
+      desc: "Drive back to Melbourne (~2 hours). You’ll arrive around 20:00. If on a guided tour, the bus returns to your hotel. If on a private tour, your driver drops you at Collins House.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 0, note: "Included in tour price" },
+      transport: []
+    },
+    {
+      time: "20:30", title: "Late Dinner at Hotel (Self-Catering)",
+      type: "food",
+      desc: "Pick up takeaway from Uber Eats or a nearby restaurant. You’ll be tired after a long day. The apartment kitchen lets you keep it simple.",
+      atmosphere: ["relaxed"],
+      img: "",
+      map: "",
+      cost: { aud: 20, note: "A$15–25 pp" },
+      transport: []
+    }
+  ],
+  dayCost: { transport: 250, food: 60, activities: 190, accommodation: 250 }
+},
+{
+  num: 6, date: "Sat, 30 May", title: "Puffing Billy & Dandenong Ranges", theme: "Heritage Railway, Rainforest & Italian Dinner",
+  weather: { high: 14, low: 7, icon: "☁️", desc: "Cool, Overcast, Possible Showers" },
+  activities: [
+    {
+      time: "08:00", title: "Breakfast at Hotel",
+      type: "food",
+      desc: "Self-catering or grab a quick coffee from Little Rogue on Drewery Lane (superb espresso, tiny standing-room-only bar).",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 10 },
+      transport: []
+    },
+    {
+      time: "08:45", title: "Train to Belgrave",
+      type: "transport",
+      desc: "Take the Belgrave line from Flinders Street Station directly to Belgrave — the terminus. ~75 min ride through Melbourne’s eastern suburbs into the Dandenong Ranges. FREE on public transport this week (May 25–31).",
+      atmosphere: [],
+      img: "",
+      map: "https://maps.google.com/?q=Belgrave+Railway+Station+Victoria",
+      cost: { aud: 0, note: "FREE (public transport free until May 31)" },
+      transport: [
+        { mode: "Metro Train (FREE)", cost: "Free", time: "75 min", note: "Belgrave line from Flinders St Station" }
+      ]
+    },
+    {
+      time: "10:00", title: "Puffing Billy Railway — Belgrave to Lakeside",
+      type: "culture",
+      desc: "Australia’s favourite heritage steam train. The century-old locomotive chugs through towering mountain ash forests, across the iconic Monbulk Creek Trestle Bridge. Open-air carriages let you dangle your legs over the side (traditional, but cold in winter — dress warm!). The 13 km journey to Lakeside takes ~1 hour. At Lakeside, the train pauses for 30 min before returning. MUST pre-book. No tickets sold on the day.",
+      atmosphere: ["scenic", "historic", "family"],
+      img: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Puffing+Billy+Railway+Belgrave",
+      cost: { aud: 64, note: "A$64 pp return (Belgrave–Lakeside)" },
+      booking: "https://puffingbillyrailway.org.au/buy-tickets/",
+      transport: []
+    },
+    {
+      time: "12:30", title: "Explore Lakeside & Emerald Village",
+      type: "nature",
+      desc: "At Lakeside, enjoy views over Emerald Lake Park. Walk around the lake (30 min circuit). The nearby town of Emerald has cafes and a general store for lunch. Alternatively, pack a picnic from QVM or Woolworths.",
+      atmosphere: ["quiet", "scenic", "relaxed"],
+      img: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Emerald+Lake+Park+Victoria",
+      cost: { aud: 20, note: "A$15–25 pp for lunch" },
+      transport: []
+    },
+    {
+      time: "14:00", title: "Return Puffing Billy to Belgrave",
+      type: "transport",
+      desc: "Board the return steam train. Same beautiful journey in reverse. Arrive Belgrave ~15:00.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 0, note: "Included in return ticket" },
+      transport: []
+    },
+    {
+      time: "15:30", title: "Train Back to Melbourne",
+      type: "transport",
+      desc: "Metro train from Belgrave to Flinders Street Station. ~75 min. Free transport.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 0, note: "FREE" },
+      transport: []
+    },
+    {
+      time: "17:00", title: "Chapel Street & South Yarra Browsing",
+      type: "culture",
+      desc: "Stretch your legs with a stroll down Chapel Street. The South Yarra end is upscale — designer boutiques, fashion flagships, chic wine bars. Walking south toward Prahran and Windsor, it becomes edgier with vintage stores, streetwear, and quirky bars. Four kilometres of Melbourne fashion culture.",
+      atmosphere: ["upscale", "local", "artsy"],
+      img: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Chapel+Street+South+Yarra+Melbourne",
+      cost: { aud: 0, note: "Free to browse" },
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "20 min from Flinders St", note: "Tram 78 or 79" },
+        { mode: "Uber", cost: "A$12–18", time: "10 min", note: "" }
+      ]
+    },
+    {
+      time: "19:00", title: "Dinner on Lygon Street, Carlton",
+      type: "food",
+      desc: "Melbourne’s “Little Italy.” Post-war Italian migrants turned this into a pasta paradise. Try Capitano (creative modern Italian, pasta alla vodka A$24), D.O.C. (authentic Napoletana pizza, mozzarella bar), or Tiamo (beloved no-frills Italian since 1986). Lygon Street buzzes on Saturday nights.",
+      atmosphere: ["foodie", "multicultural", "busy", "local"],
+      img: "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Lygon+Street+Carlton+Melbourne",
+      cost: { aud: 50, note: "A$40–60 pp with wine" },
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "15 min", note: "Tram 1 or 6 up Swanston St" },
+        { mode: "Uber", cost: "A$10–15", time: "8 min", note: "" }
+      ]
+    }
+  ],
+  dayCost: { transport: 0, food: 80, activities: 64, accommodation: 250 }
+},
+{
+  num: 7, date: "Sun, 31 May", title: "Beaches & Neighborhoods", theme: "Brighton, St Kilda, Fitzroy & Collingwood",
+  weather: { high: 15, low: 8, icon: "☀️", desc: "Sunny Intervals, 15°C" },
+  activities: [
+    {
+      time: "08:30", title: "Breakfast at Hotel",
+      type: "food",
+      desc: "Self-catering or coffee at Patricia Coffee Brewers (standing bar, no seats, incredible coffee).",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 10 },
+      transport: []
+    },
+    {
+      time: "09:30", title: "Brighton Beach Bathing Boxes",
+      type: "culture",
+      desc: "93 heritage-listed wooden bathing boxes painted in vibrant colours, standing in a row along Dendy Street Beach. Privately owned (some sell for A$300k+), they’re a beloved Melbourne icon. Perfect for photos against the Port Phillip Bay backdrop. In late May, the beach is quiet and the light is gorgeous. Free to visit, 30–60 min.",
+      atmosphere: ["scenic", "quiet", "touristy"],
+      img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Brighton+Bathing+Boxes+Dendy+Street+Beach",
+      cost: { aud: 0, note: "Free" },
+      transport: [
+        { mode: "Train (FREE)", cost: "Free", time: "23 min", note: "Sandringham line from Flinders St to Brighton Beach station, 15-min walk to boxes" },
+        { mode: "Uber", cost: "A$20–35", time: "20 min", note: "" }
+      ]
+    },
+    {
+      time: "10:30", title: "St Kilda Beach & Pier",
+      type: "nature",
+      desc: "Melbourne’s most famous beach suburb. Walk along the palm-tree-lined foreshore to St Kilda Pier. At the end of the pier’s breakwater, a colony of Little Penguins nests in the rock crevices — they’re best seen at dusk, but you may spot a few during the day. The pier has sweeping views of the city skyline. Luna Park’s giant grinning mouth entrance is just along the Esplanade.",
+      atmosphere: ["bohemian", "relaxed", "coastal", "touristy"],
+      img: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=St+Kilda+Beach+Melbourne",
+      cost: { aud: 0, note: "Free" },
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "15 min from Brighton", note: "Bus 600/922/923 between Brighton and St Kilda, or tram 16" },
+        { mode: "Uber", cost: "A$10–15", time: "8 min from Brighton", note: "" }
+      ]
+    },
+    {
+      time: "11:30", title: "Luna Park Melbourne",
+      type: "culture",
+      desc: "Heritage amusement park (opened 1912) with the famous grinning face entrance. Opens Sat-Sun 11 AM–6 PM. Unlimited Rides tickets A$55 pp, or just enjoy the free-entry promenade and take photos. The Scenic Railway is the world’s oldest continually operating roller coaster (1912). Fun, retro atmosphere.",
+      atmosphere: ["family", "touristy", "local"],
+      img: "https://images.unsplash.com/photo-1570533136839-8e3d27a6a3ca?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Luna+Park+Melbourne",
+      cost: { aud: 0, note: "Free entry. Rides: A$55 pp unlimited, or A$30 single ride entry." },
+      booking: "https://lunapark.com.au/tickets/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "5 min from St Kilda Beach", note: "" }
+      ]
+    },
+    {
+      time: "12:30", title: "Lunch on Acland Street, St Kilda",
+      type: "food",
+      desc: "St Kilda’s main dining strip. Famous for European cake shops (Monarch Cakes, Acland Street), brunch cafés, and eclectic restaurants. Try Lau’s Kitchen for Vietnamese, Batch Espresso for brunch, or Cicciolina for wine and Mediterranean plates. St Kilda on a Sunday is buzzy, with the Esplanade Market running along the foreshore (weather permitting).",
+      atmosphere: ["bohemian", "foodie", "local", "multicultural"],
+      img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Acland+Street+St+Kilda+Melbourne",
+      cost: { aud: 30, note: "A$25–35 pp" },
+      transport: []
+    },
+    {
+      time: "14:00", title: "Fitzroy — Brunswick Street",
+      type: "culture",
+      desc: "Melbourne’s bohemian heartland. Brunswick Street is a non-stop strip of vintage shops, record stores, independent bookshops, tattoo parlours, quirky bars, and cafés. Street art covers every surface. The vibe is proudly grungy yet stylish — Japanese cafés next to dive bars, fashion studios next to Ethiopian restaurants. This is where Melbourne’s creative class lives.",
+      atmosphere: ["bohemian", "artsy", "grungy", "multicultural", "local"],
+      img: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Brunswick+Street+Fitzroy+Melbourne",
+      cost: { aud: 0, note: "Free to explore" },
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "30 min from St Kilda", note: "Tram 16 to Flinders St, then tram 11 to Brunswick St" },
+        { mode: "Uber", cost: "A$15–25", time: "15 min", note: "" }
+      ]
+    },
+    {
+      time: "16:00", title: "Collingwood — Smith Street",
+      type: "culture",
+      desc: "Named the “coolest neighbourhood in the world” by Time Out. Grittier than Fitzroy, less polished. Smith Street is the main artery: Vietnamese bakeries sit beside rooftop bars, independent galleries hide in converted warehouses. Visit Collingwood Yards (creative hub), browse independent boutiques, or duck into an anonymous-looking door that turns out to be a natural wine bar.",
+      atmosphere: ["bohemian", "grungy", "artsy", "multicultural"],
+      img: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Smith+Street+Collingwood+Melbourne",
+      cost: { aud: 0, note: "Free to explore" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "10 min from Brunswick St", note: "" }
+      ]
+    },
+    {
+      time: "17:30", title: "Coffee at Industry Beans",
+      type: "food",
+      desc: "Melbourne’s most inventive specialty coffee roaster. Experimental brews, single-origin pours, and a sleek industrial-chic space in a converted Fitzroy warehouse. Try the signature espresso or a pourover. Also serves excellent brunch food.",
+      atmosphere: ["artsy", "local", "foodie"],
+      img: "",
+      map: "https://maps.google.com/?q=Industry+Beans+Fitzroy+Melbourne",
+      cost: { aud: 8, note: "A$6–10 pp" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "5 min from Smith St", note: "" }
+      ]
+    },
+    {
+      time: "18:30", title: "Dinner at Cutler & Co",
+      type: "food",
+      desc: "Andrew McConnell’s flagship. Refined Australian dining in a converted metalworks factory on Gertrude Street. Seasonal tasting menus or à la carte. Sunday supper menu (3 courses, A$90) is excellent value. Wine list is extraordinary. Book well ahead. One of Melbourne’s best restaurants.",
+      atmosphere: ["upscale", "foodie", "romantic"],
+      img: "",
+      map: "https://maps.google.com/?q=Cutler+and+Co+Fitzroy+Melbourne",
+      cost: { aud: 100, note: "A$90–120 pp (Sunday supper)" },
+      booking: "https://www.cutlerandco.com.au/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "5 min from Industry Beans", note: "" }
+      ]
+    }
+  ],
+  dayCost: { transport: 0, food: 148, activities: 0, accommodation: 250 }
+},
+{
+  num: 8, date: "Mon, 1 Jun", title: "Mornington Peninsula", theme: "Hot Springs, Coastal Views & Fine Dining",
+  weather: { high: 14, low: 8, icon: "☁️", desc: "Cloudy, Cool" },
+  activities: [
+    {
+      time: "07:30", title: "Breakfast at Hotel",
+      type: "food",
+      desc: "Fuel up — long day ahead. Self-catering or quick coffee from a nearby café.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 10 },
+      transport: []
+    },
+    {
+      time: "08:30", title: "Train to Frankston",
+      type: "transport",
+      desc: "Frankston line from Flinders Street Station to Frankston (~60 min). From June 1, public transport is HALF PRICE (daily cap A$5.70, 2-hour fare A$2.85). You’ll need a Myki card — buy one at any 7-Eleven for A$6 + top up.",
+      atmosphere: [],
+      img: "",
+      map: "https://maps.google.com/?q=Frankston+Station+Victoria",
+      cost: { aud: 3, note: "A$2.85 pp (half-price fare)" },
+      transport: [
+        { mode: "Train (half-price)", cost: "A$2.85 pp", time: "60 min", note: "Buy Myki at 7-Eleven (A$6 + top-up)" }
+      ]
+    },
+    {
+      time: "09:30", title: "Bus 788 to Rye + Uber to Hot Springs",
+      type: "transport",
+      desc: "Bus 788 from Frankston Station along the coast to Rye (~50 min, Myki fare). Then Uber/taxi from Rye to Peninsula Hot Springs (~15 min, A$30–40). Or pre-book the Hot Springs shuttle (Tue/Sat only — not available Monday).",
+      atmosphere: [],
+      img: "",
+      map: "https://maps.google.com/?q=Peninsula+Hot+Springs+Fingal+Victoria",
+      cost: { aud: 35, note: "A$30–40 Uber from Rye" },
+      transport: [
+        { mode: "Bus 788 + Uber", cost: "A$3 + A$35", time: "50 min + 15 min", note: "Bus is half-price Myki fare" }
+      ]
+    },
+    {
+      time: "10:30", title: "Peninsula Hot Springs — Weekday Getaway for Two",
+      type: "nature",
+      desc: "20+ open-air geothermal pools ranging from 36–43°C, set in lush bushland. The Weekday Getaway for Two (A$235) includes Bath House bathing + pizzas & juice for both. Soak in the hilltop pool for panoramic views across the green hills. In winter, the steam rising from the hot water into the cool air is magical. Adults-only (16+). Towel, robe, locker hire included. Allow 3–4 hours to fully relax.",
+      atmosphere: ["relaxed", "romantic", "scenic", "quiet"],
+      img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Peninsula+Hot+Springs+140+Springs+Lane+Fingal+Victoria",
+      cost: { aud: 118, note: "A$235 for 2 (Weekday Getaway incl. pizza & juice)" },
+      booking: "https://www.peninsulahotsprings.com/bathe/bath-house/weekday-getaway-for-two",
+      transport: []
+    },
+    {
+      time: "14:30", title: "Explore Sorrento Village",
+      type: "culture",
+      desc: "Historic seaside village on the tip of the Mornington Peninsula. Limestone heritage buildings, boutique shops, galleries, and the Sorrento Hotel (1871). Walk along the foreshore and watch the Port Phillip Bay ferries. Pop into Sorrento Cellars for local wine tasting.",
+      atmosphere: ["scenic", "quiet", "historic", "upscale"],
+      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Sorrento+Victoria+Australia",
+      cost: { aud: 0, note: "Free to explore (wine tasting ~A$10–20)" },
+      transport: [
+        { mode: "Uber", cost: "A$25–35", time: "20 min from Hot Springs", note: "Pre-book return Uber — driver availability can be limited on the Peninsula" }
+      ]
+    },
+    {
+      time: "16:00", title: "Return to Melbourne",
+      type: "transport",
+      desc: "Uber to Frankston Station (~A$50–60 from Sorrento) or Bus 788 to Frankston. Train back to CBD. Arrive ~17:30.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 55, note: "A$50–60 Uber to Frankston + A$2.85 train" },
+      transport: [
+        { mode: "Uber + Train", cost: "A$55–65 total", time: "1.5 hours", note: "" },
+        { mode: "Bus 788 + Train", cost: "A$5.70", time: "2 hours", note: "More time, much cheaper" }
+      ]
+    },
+    {
+      time: "18:00", title: "Rest & Refresh at Hotel",
+      type: "transport",
+      desc: "Freshen up before dinner. You’ve had a relaxing spa day — carry the zen into the evening.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 0 },
+      transport: []
+    },
+    {
+      time: "19:30", title: "Fine Dining at Gimlet",
+      type: "food",
+      desc: "Andrew McConnell’s glamorous 1920s-inspired brasserie at 33 Russell Street. Lobster thermidor, caviar, oysters, and cocktails in an opulent Art Deco space with crystal chandeliers and velvet banquettes. Dress up. A$100–150 pp with drinks. Book ahead.",
+      atmosphere: ["upscale", "romantic", "foodie"],
+      img: "",
+      map: "https://maps.google.com/?q=Gimlet+33+Russell+Street+Melbourne",
+      cost: { aud: 120, note: "A$100–150 pp with cocktails" },
+      booking: "https://gimletmelbourne.com.au/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "8 min from Collins House", note: "" }
+      ]
+    }
+  ],
+  dayCost: { transport: 100, food: 130, activities: 118, accommodation: 250 }
+},
+{
+  num: 9, date: "Tue, 2 Jun", title: "Zoo, Museums & Shopping", theme: "Melbourne Zoo, Souvenirs & Farewell Dinner",
+  weather: { high: 14, low: 7, icon: "☁️", desc: "Cool, Overcast" },
+  activities: [
+    {
+      time: "08:30", title: "Breakfast at Hotel",
+      type: "food",
+      desc: "Self-catering or walk to Market Lane Coffee at Collins Quarter for a final Melbourne flat white.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 10 },
+      transport: []
+    },
+    {
+      time: "09:30", title: "Melbourne Zoo",
+      type: "nature",
+      desc: "Australia’s oldest zoo (est. 1862), just minutes north of the CBD. Home to 320+ animal species including platypus, Tasmanian Devils, koalas, kangaroos, gorillas, snow leopards, and elephants. Highlights: the Australian Bush habitat (walk among free-roaming kangaroos), the Platypus House, and the Gorilla Rainforest. Allow 3 hours. A$54.50/adult.",
+      atmosphere: ["family", "local", "wildlife"],
+      img: "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Melbourne+Zoo+Elliott+Avenue+Parkville",
+      cost: { aud: 55, note: "A$54.50 pp" },
+      booking: "https://www.zoo.org.au/melbourne/",
+      transport: [
+        { mode: "Tram 58 (half-price)", cost: "A$2.85 pp", time: "15 min", note: "Stop 26, directly outside zoo" },
+        { mode: "Uber", cost: "A$12–20", time: "8 min", note: "" }
+      ]
+    },
+    {
+      time: "12:30", title: "Lunch on Lygon Street (Carlton)",
+      type: "food",
+      desc: "A short walk from the zoo into Carlton’s Italian quarter. Try Jimmy Watson’s Wine Bar (since 1935, great wine by the glass + cheese boards) or grab a quick wood-fired pizza at D.O.C. (authentic Napoletana, ~A$22).",
+      atmosphere: ["foodie", "multicultural", "local"],
+      img: "",
+      map: "https://maps.google.com/?q=Lygon+Street+Carlton+Melbourne",
+      cost: { aud: 25, note: "A$20–30 pp" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "15 min from zoo", note: "Through Royal Park" }
+      ]
+    },
+    {
+      time: "14:00", title: "Shopping — Emporium Melbourne & Melbourne Central",
+      type: "culture",
+      desc: "Connected premium shopping centres in the CBD. Emporium has high-end fashion (Saba, Scanlan Theodore, Country Road), homewares, and a rooftop dining precinct. Melbourne Central has the heritage shot tower preserved under a glass cone. Browse Australian brands for souvenirs: R.M. Williams (boots), Aesop (skincare, born in Melbourne), T2 Tea.",
+      atmosphere: ["busy", "upscale"],
+      img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Emporium+Melbourne+287+Lonsdale+Street",
+      cost: { aud: 0, note: "Free to browse" },
+      transport: [
+        { mode: "Tram (half-price)", cost: "A$2.85", time: "10 min from Lygon St", note: "Free Tram Zone in CBD" }
+      ]
+    },
+    {
+      time: "15:30", title: "DFO South Wharf (Outlet Shopping)",
+      type: "culture",
+      desc: "If you want bargains: 180+ outlet stores with up to 70% off retail. Armani, Ralph Lauren, Calvin Klein, Tommy Hilfiger, Nike Factory, Kathmandu, Converse, Levi’s. Waterfront location along the Yarra. Good for stocking up on Australian-brand clothing at discount prices.",
+      atmosphere: ["busy", "local"],
+      img: "",
+      map: "https://maps.google.com/?q=DFO+South+Wharf+Melbourne",
+      cost: { aud: 0, note: "Free to browse" },
+      booking: "https://www.south-wharf.dfo.com.au/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "15 min from CBD", note: "Along Southbank Promenade" },
+        { mode: "Tram 58", cost: "A$2.85", time: "8 min", note: "" }
+      ]
+    },
+    {
+      time: "17:00", title: "Return to Hotel & Pack",
+      type: "transport",
+      desc: "Head back to Collins House. Start packing for tomorrow’s departure. Organise luggage, check TR59 flight status on the Scoot app.",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 0 },
+      transport: []
+    },
+    {
+      time: "19:00", title: "Farewell Dinner at Flower Drum",
+      type: "food",
+      desc: "Melbourne’s legendary Cantonese restaurant, operating since 1975 on Market Lane in Chinatown. Peking duck (carved tableside), mud crab with XO sauce, pipis with black bean sauce. Impeccable white-tablecloth service. A$100–150 pp. Book well ahead — this is Melbourne’s most iconic restaurant. A fitting farewell to the city.",
+      atmosphere: ["upscale", "foodie", "historic"],
+      img: "",
+      map: "https://maps.google.com/?q=Flower+Drum+17+Market+Lane+Melbourne",
+      cost: { aud: 130, note: "A$100–150 pp" },
+      booking: "https://www.flowerdrum.melbourne/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "5 min from Collins House", note: "" }
+      ]
+    },
+    {
+      time: "21:00", title: "Final Walk Along Southbank Promenade",
+      type: "culture",
+      desc: "A last stroll along the Yarra River at night. The city skyline reflected in the water, the Arts Centre spire illuminated, Crown’s fire pillars erupting on the hour. Melbourne at its most photogenic.",
+      atmosphere: ["romantic", "scenic", "relaxed"],
+      img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Southbank+Promenade+Melbourne",
+      cost: { aud: 0 },
+      transport: []
+    }
+  ],
+  dayCost: { transport: 10, food: 165, activities: 55, accommodation: 250 }
+},
+{
+  num: 10, date: "Wed, 3 Jun", title: "Departure Day", theme: "Farewell Melbourne",
+  weather: { high: 13, low: 7, icon: "☁️", desc: "Cool, Overcast" },
+  activities: [
+    {
+      time: "08:00", title: "Final Breakfast",
+      type: "food",
+      desc: "One last Melbourne breakfast. Walk to Degraves Street for a final flat white and avocado toast, or enjoy a quiet breakfast in your apartment kitchen.",
+      atmosphere: ["relaxed"],
+      img: "",
+      map: "https://maps.google.com/?q=Degraves+Street+Melbourne",
+      cost: { aud: 15, note: "A$12–18 pp" },
+      transport: []
+    },
+    {
+      time: "09:00", title: "Last-Minute Shopping or Coffee",
+      type: "culture",
+      desc: "If you missed anything: Aesop signature store on Flinders Lane (Melbourne-born skincare, great gifts), T2 Tea at Emporium (Australian tea brand), or the Block Arcade (heritage shopping arcade with Hopetoun Tea Rooms for scones).",
+      atmosphere: ["relaxed", "local"],
+      img: "",
+      map: "https://maps.google.com/?q=Block+Arcade+Melbourne",
+      cost: { aud: 0, note: "Free to browse" },
+      transport: []
+    },
+    {
+      time: "10:00", title: "Check Out of Collins House",
+      type: "transport",
+      desc: "Check-out by 10:00 AM. Store luggage at reception if needed. Final check: passport, boarding pass, Myki card (keep as souvenir!).",
+      atmosphere: [],
+      img: "",
+      map: "",
+      cost: { aud: 0 },
+      transport: []
+    },
+    {
+      time: "10:15", title: "Uber to Melbourne Airport",
+      type: "transport",
+      desc: "Book Uber/DiDi from Collins House to Melbourne Airport Tullamarine Terminal 2. Allow 30–45 min for the drive. Aim to arrive ~10:45–11:00 for the 13:00 departure. Scoot counters open 3 hours before departure, close 60 min before.",
+      atmosphere: [],
+      img: "",
+      map: "https://maps.google.com/?q=Melbourne+Airport+Tullamarine+Terminal+2",
+      cost: { aud: 50, note: "A$45–60" },
+      transport: [
+        { mode: "Uber/DiDi", cost: "A$45–60", time: "30–40 min", note: "Midday, moderate traffic" },
+        { mode: "SkyBus", cost: "A$49.80 (2 pax)", time: "30 min", note: "From Southern Cross Station. More luggage-friendly." }
+      ]
+    },
+    {
+      time: "11:00", title: "Arrive Airport & Check In",
+      type: "transport",
+      desc: "Terminal 2 for Scoot. Check in, drop bags, clear security and outbound immigration. Melbourne Airport has duty-free shopping and dining options airside.",
+      atmosphere: ["busy"],
+      img: "",
+      map: "",
+      cost: { aud: 0 },
+      transport: []
+    },
+    {
+      time: "13:00", title: "Scoot TR59: Melbourne → Singapore",
+      type: "transport",
+      desc: "Depart Melbourne Tullamarine at 13:00. Boeing 787-9, 8h05m flight. Arrive Singapore Changi Terminal 1 at ~19:05 local time. Pre-book meals on the Scoot app. Welcome home.",
+      atmosphere: [],
+      img: "https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&h=360&fit=crop",
+      map: "",
+      cost: { aud: 0, note: "Pre-booked" },
+      transport: []
+    }
+  ],
+  dayCost: { transport: 50, food: 15, activities: 0, accommodation: 0 }
+}
+];
+
+function renderSidebar() {
+  const nav = document.getElementById('sidebar-nav');
+  nav.innerHTML = '<button class="nav-btn active" data-day="overview"><span class="day-num">⌂</span><span class="nav-label">Trip Overview<small>Flights, Hotels, Budget</small></span></button>';
+  DAYS.forEach(d => {
+    nav.innerHTML += `<button class="nav-btn" data-day="${d.num}"><span class="day-num">${d.num}</span><span class="nav-label">${d.title}<small>${d.date}</small></span></button>`;
+  });
+  nav.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      nav.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showDay(btn.dataset.day);
+      if (window.innerWidth <= 900) {
+        document.querySelector('.sidebar').classList.remove('open');
+        document.querySelector('.sidebar-overlay').classList.remove('open');
+      }
+    });
+  });
+}
+
+function showDay(key) {
+  document.querySelectorAll('.day-content').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById(key === 'overview' ? 'overview' : `day-${key}`);
+  if (target) target.classList.add('active');
+  window.scrollTo({ top: 0 });
+}
+
+function renderDays() {
+  const container = document.getElementById('days-container');
+  DAYS.forEach(d => {
+    const section = document.createElement('div');
+    section.className = 'day-content';
+    section.id = `day-${d.num}`;
+    let html = `<div class="day-header"><h2>Day ${d.num}: ${d.title}</h2><div class="day-subtitle">${d.date} &mdash; ${d.theme}</div><div class="day-weather">${d.weather.icon} ${d.weather.desc} &bull; High ${d.weather.high}&deg;C / Low ${d.weather.low}&deg;C</div></div>`;
+    html += '<div class="timeline">';
+    d.activities.forEach(a => {
+      if (!a.title) return;
+      const dotClass = a.type || '';
+      html += `<div class="timeline-item"><div class="timeline-time"><span>${a.time}</span></div><div class="timeline-dot ${dotClass}"></div><div class="activity-card">`;
+      if (a.img) {
+        html += `<img class="activity-card-img" src="${a.img}" alt="${a.title}" loading="lazy" onerror="this.classList.add('error');this.outerHTML='<div class=\\'activity-card-img error\\'>🏞️</div>'">`;
+      }
+      html += '<div class="activity-body">';
+      html += `<h3>${a.title}</h3>`;
+      if (a.atmosphere && a.atmosphere.length) {
+        html += '<div class="tags">';
+        a.atmosphere.forEach(t => html += `<span class="tag tag-${t}">${t}</span>`);
+        html += '</div>';
+      }
+      if (a.desc) html += `<div class="description">${a.desc}</div>`;
+      html += '</div>';
+      if (a.transport && a.transport.length) {
+        html += '<div class="info-section"><h4>Getting There</h4><table class="transport-table"><thead><tr><th>Mode</th><th>Cost</th><th>Time</th><th>Note</th></tr></thead><tbody>';
+        a.transport.forEach(t => {
+          html += `<tr><td><strong>${t.mode}</strong></td><td>${t.cost}</td><td>${t.time}</td><td>${t.note || ''}</td></tr>`;
+        });
+        html += '</tbody></table></div>';
+      }
+      if (a.cost && (a.cost.aud > 0 || a.cost.note)) {
+        html += '<div class="info-section"><h4>Cost</h4><div class="cost-row"><span class="cost-label">' + (a.cost.note || 'Entry') + '</span><span class="cost-values"><span class="cost-aud">A$' + a.cost.aud + '</span><span class="cost-sgd">~S$' + toSGD(a.cost.aud) + '</span></span></div></div>';
+      }
+      let links = '';
+      if (a.map) links += `<a href="${a.map}" target="_blank" rel="noopener" class="action-link map">📍 Map</a>`;
+      if (a.booking) links += `<a href="${a.booking}" target="_blank" rel="noopener" class="action-link book">📝 Reserve</a>`;
+      if (links) html += `<div class="action-links">${links}</div>`;
+      html += '</div></div>';
+    });
+    html += '</div>';
+    const totalAUD = d.dayCost.transport + d.dayCost.food + d.dayCost.activities + d.dayCost.accommodation;
+    html += `<div class="day-summary"><h3>💰 Day ${d.num} Estimated Cost (per person)</h3><div class="summary-grid">
+      <div class="summary-item"><div class="label">Transport</div><div class="val">A$${d.dayCost.transport} <small style="color:var(--muted)">~S$${toSGD(d.dayCost.transport)}</small></div></div>
+      <div class="summary-item"><div class="label">Food & Drink</div><div class="val">A$${d.dayCost.food} <small style="color:var(--muted)">~S$${toSGD(d.dayCost.food)}</small></div></div>
+      <div class="summary-item"><div class="label">Activities</div><div class="val">A$${d.dayCost.activities} <small style="color:var(--muted)">~S$${toSGD(d.dayCost.activities)}</small></div></div>
+      <div class="summary-item"><div class="label">Accommodation</div><div class="val">A$${d.dayCost.accommodation} <small style="color:var(--muted)">~S$${toSGD(d.dayCost.accommodation)}</small></div></div>
+      <div class="summary-item" style="background:var(--navy);color:#fff;grid-column:1/-1"><div class="label" style="color:var(--gold)">Day Total</div><div class="val" style="color:#fff">A$${totalAUD} <small style="color:var(--gold-light)">~S$${toSGD(totalAUD)}</small></div></div>
+    </div></div>`;
+    section.innerHTML = html;
+    container.appendChild(section);
+  });
+}
+
+function calculateTripTotals() {
+  let totals = { transport: 0, food: 0, activities: 0, accommodation: 0 };
+  DAYS.forEach(d => {
+    totals.transport += d.dayCost.transport;
+    totals.food += d.dayCost.food;
+    totals.activities += d.dayCost.activities;
+    totals.accommodation += d.dayCost.accommodation;
+  });
+  const grand = totals.transport + totals.food + totals.activities + totals.accommodation;
+  document.getElementById('total-transport').textContent = `A$${totals.transport}`;
+  document.getElementById('total-food').textContent = `A$${totals.food}`;
+  document.getElementById('total-activities').textContent = `A$${totals.activities}`;
+  document.getElementById('total-accommodation').textContent = `A$${totals.accommodation}`;
+  document.getElementById('total-grand-aud').textContent = `A$${grand}`;
+  document.getElementById('total-grand-sgd').textContent = `~S$${toSGD(grand)}`;
+  document.getElementById('total-grand-aud-2x').textContent = `A$${grand * 2}`;
+  document.getElementById('total-grand-sgd-2x').textContent = `~S$${toSGD(grand * 2)}`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderSidebar();
+  renderDays();
+  calculateTripTotals();
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.querySelector('.sidebar').classList.toggle('open');
+    document.querySelector('.sidebar-overlay').classList.toggle('open');
+  });
+  document.querySelector('.sidebar-overlay').addEventListener('click', () => {
+    document.querySelector('.sidebar').classList.remove('open');
+    document.querySelector('.sidebar-overlay').classList.remove('open');
+  });
+});
