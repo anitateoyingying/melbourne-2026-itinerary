@@ -249,164 +249,24 @@ const DAYS = [
   dayCost: { transport: 0, food: 115, activities: 0, accommodation: 250 }
 },
 {
-  num: 3, date: "Wed, 27 May", title: "Great Ocean Road Day 1", theme: "Torquay → Anglesea → Lorne → Kennett River → Apollo Bay",
+  num: 3, date: "Wed, 27 May", title: "Great Ocean Road", theme: "12 Apostles, Wild Koalas, Rainforest & Shipwreck Coast",
   weather: { high: 14, low: 9, icon: "🌧️", desc: "Showers & Wind, 13–15°C" },
   activities: [
     {
-      time: "07:30", title: "Private Driver Pickup from Hotel",
+      time: "06:30", title: "Hit The Road Boutique Tour — Pickup",
       type: "transport",
-      desc: "Your private driver collects you from Collins House. Recommended: Bilby Tours (A$2,199 for 2-day private tour, 1–6 pax) or Melbourne Touring Company (A$2,799 for 2-day, Mercedes upgrade +A$250). Price includes driver-guide, fuel, tolls, parking, national park entry. Meals not included. Dress in warm layers — coastal wind will be cold.",
+      desc: "Small group tour (max 12 people) in a luxury Mercedes Sprinter. Pickup from 196 Flinders St at 06:30 (5-min walk from Collins House). This tour uses the REVERSE route — you visit the 12 Apostles first thing in the morning before the big coaches arrive. 5,000+ five-star reviews. Promo code BOUTIQUE_10 saves A$10/pp.",
       atmosphere: [],
       img: "https://images.unsplash.com/photo-1449965408869-ebd3fee49e6e?w=600&h=360&fit=crop",
-      map: "",
-      cost: { aud: 1100, note: "A$1,100 (half of 2-day A$2,199 Bilby Tours)" },
-      booking: "https://bilbytravel.com.au/tours/great-ocean-road-private-tour/",
+      map: "https://maps.google.com/?q=196+Flinders+Street+Melbourne",
+      cost: { aud: 128, note: "A$128 pp (A$118 with promo BOUTIQUE_10)" },
+      booking: "https://hittheroadtours.com.au/",
       transport: []
     },
     {
-      time: "09:15", title: "Torquay — Start of the Great Ocean Road",
+      time: "08:30", title: "Twelve Apostles (Reverse Route — Before the Crowds)",
       type: "nature",
-      desc: "The official beginning of the Great Ocean Road. Torquay is the birthplace of Rip Curl and Quiksilver — surf culture runs deep here. Browse the Australian National Surfing Museum if time permits. The town has a laidback, beachy vibe even in winter.",
-      atmosphere: ["coastal", "relaxed", "local"],
-      img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Torquay+Great+Ocean+Road+Victoria",
-      cost: { aud: 0, note: "Free" },
-      transport: []
-    },
-    {
-      time: "09:45", title: "Bells Beach Lookout",
-      type: "nature",
-      desc: "One of the world’s most famous surf breaks. High clifftop lookouts give dramatic views of the reef break below. Home of the Rip Curl Pro, the world’s longest-running surf competition. Even if there are no waves, the raw beauty of the sandstone cliffs and crashing Southern Ocean swells is breathtaking. In late May, you may have the lookout to yourselves.",
-      atmosphere: ["scenic", "quiet", "coastal"],
-      img: "https://images.unsplash.com/photo-1502680390548-bdbac40e7a78?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Bells+Beach+Victoria",
-      cost: { aud: 0, note: "Free" },
-      transport: []
-    },
-    {
-      time: "10:15", title: "Anglesea Golf Club — Wild Kangaroo Encounter",
-      type: "nature",
-      desc: "~300 wild Eastern Grey Kangaroos live on this golf course. Guided Kangaroo Tours (25 min) run every 30 min. Walk among the kangaroos on the fairways with a guide who explains their behaviour. Incredibly close encounters — some roos are less than 2 metres away. A$17/adult. Late May: kangaroos are present year-round; quieter than summer.",
-      atmosphere: ["wildlife", "quiet", "family"],
-      img: "https://images.unsplash.com/photo-1578326457399-3b34dbbf23b8?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Anglesea+Golf+Club+45+Golf+Links+Road+Anglesea+VIC",
-      cost: { aud: 17, note: "A$17 pp" },
-      booking: "https://www.angleseagolfclub.com.au/cms/kangaroo-tours/",
-      transport: []
-    },
-    {
-      time: "11:15", title: "Split Point Lighthouse, Aireys Inlet",
-      type: "nature",
-      desc: "The white lighthouse from the TV show “Round the Twist.” Operational since 1891, sitting on dramatic clifftops above Eagle Rock Marine Sanctuary. Multiple viewing platforms. In late May, the moody sky and crashing waves make this atmospheric and beautiful. Grab coffee at the small café next door.",
-      atmosphere: ["scenic", "quiet", "historic", "coastal"],
-      img: "https://images.unsplash.com/photo-1498931299472-f7a63a5a1cfa?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Split+Point+Lighthouse+Aireys+Inlet",
-      cost: { aud: 0, note: "Free (exterior). Tours ~A$15 when available." },
-      transport: []
-    },
-    {
-      time: "12:30", title: "Lunch at Lorne",
-      type: "food",
-      desc: "Charming seaside town nestled between the Otway Ranges and the ocean. In late May, the tourist crowds have vanished and Lorne feels like a quiet coastal village. Try Swing Bridge Café for seafood chowder, or Lorne Fish and Chips. Teddy’s Lookout (5-min drive above town) offers one of the GOR’s best panoramic views.",
-      atmosphere: ["coastal", "relaxed", "scenic", "quiet"],
-      img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Lorne+Victoria+Australia",
-      cost: { aud: 30, note: "A$25–40 pp for lunch" },
-      transport: []
-    },
-    {
-      time: "14:30", title: "Kennett River Koala Walk — Wild Koalas!",
-      type: "nature",
-      desc: "THE best place to see wild koalas on the Great Ocean Road. Walk along Grey River Road and look up into the eucalyptus forks — round grey balls of fluff wedged into tree branches. Late May is actually the BEST time: bare branches make koalas much easier to spot, and they descend lower for warmth. Also expect King Parrots and Crimson Rosellas — often so tame they’ll land on your arm. Allow 45–60 min. Otway koala population: ~20,000.",
-      atmosphere: ["wildlife", "quiet", "scenic"],
-      img: "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Kennett+River+Victoria+Koala+Walk",
-      cost: { aud: 0, note: "Free" },
-      transport: []
-    },
-    {
-      time: "16:00", title: "Apollo Bay — Marriners Lookout Sunset",
-      type: "nature",
-      desc: "End the day at Apollo Bay, a laidback fishing town with a long curved beach. Climb to Marriners Lookout (steep 5-min walk) for panoramic views of the bay, the ocean, and the rolling green Otway hills. Sunset ~5:10 PM in late May. Beautiful and often deserted in winter.",
-      atmosphere: ["scenic", "quiet", "coastal", "romantic"],
-      img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Marriners+Lookout+Apollo+Bay+Victoria",
-      cost: { aud: 0, note: "Free" },
-      transport: []
-    },
-    {
-      time: "17:30", title: "Check in to Overnight Accommodation",
-      type: "transport",
-      desc: "Overnight at Anchors Port Campbell (boutique coastal villas, ~A$250/night, rated 10.0/10 on Booking.com) or Waves Luxury Suites in Port Campbell (~A$150/night, adults-only). Both offer fireplaces, ocean views, and intimate atmosphere. Your driver will take you from Apollo Bay to Port Campbell (~1.5h drive through the Otways).",
-      atmosphere: ["romantic", "relaxed", "scenic"],
-      img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Anchors+Port+Campbell+Victoria",
-      cost: { aud: 250, note: "A$150–310/night" },
-      booking: "https://www.anchorsportcampbell.com.au/",
-      transport: []
-    },
-    {
-      time: "19:00", title: "Dinner at 12 Rocks Café Bar",
-      type: "food",
-      desc: "Cosy restaurant in Port Campbell village. Locally sourced seafood, steaks, and wine. In winter, the fireplace is going and the atmosphere is warm and inviting. One of the few dining options in town — book ahead.",
-      atmosphere: ["relaxed", "local", "foodie"],
-      img: "",
-      map: "https://maps.google.com/?q=12+Rocks+Cafe+Bar+Port+Campbell",
-      cost: { aud: 50, note: "A$40–60 pp" },
-      transport: []
-    }
-  ],
-  dayCost: { transport: 1100, food: 80, activities: 17, accommodation: 250 }
-},
-{
-  num: 4, date: "Thu, 28 May", title: "Great Ocean Road Day 2", theme: "Cape Otway → Twelve Apostles → Loch Ard Gorge → Return",
-  weather: { high: 13, low: 8, icon: "🌬️", desc: "Windy, Partly Cloudy, 13°C" },
-  activities: [
-    {
-      time: "08:00", title: "Breakfast at Accommodation",
-      type: "food",
-      desc: "Enjoy a relaxed breakfast at your Port Campbell accommodation. If self-catering, the local general store has basics. Or walk to the Port Campbell Visitor Centre café.",
-      atmosphere: ["relaxed"],
-      img: "",
-      map: "",
-      cost: { aud: 15, note: "A$10–20 pp" },
-      transport: []
-    },
-    {
-      time: "09:00", title: "Cape Otway Lighthouse",
-      type: "nature",
-      desc: "Australia’s oldest surviving mainland lighthouse (1848), known as the “Beacon of Hope.” Heritage precinct includes the original Telegraph Station, WWII Radar Bunker, and keeper’s quarters. Koalas are incredibly common along Lighthouse Road — the Manna Gum trees here are a koala motorway. Late May is the START of whale season: watch for Southern Right Whales breaching offshore. Entry currently reduced to A$11/adult during lighthouse tower restoration.",
-      atmosphere: ["historic", "wildlife", "scenic", "quiet"],
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Cape+Otway+Lightstation+Victoria",
-      cost: { aud: 11, note: "A$11 pp (reduced during restoration)" },
-      booking: "https://www.lightstation.com/lightstation-tickets/",
-      transport: []
-    },
-    {
-      time: "10:30", title: "Maits Rest Rainforest Walk",
-      type: "nature",
-      desc: "Easy 30-minute circuit boardwalk through ancient Otway Rainforest. Towering Myrtle Beech trees draped in moss, tree ferns taller than you, the sound of dripping water. In winter, the forest is lush, green, and mystical. The boardwalk is fully accessible. A magical detour from the coastal scenery.",
-      atmosphere: ["quiet", "scenic"],
-      img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Maits+Rest+Rainforest+Walk+Great+Otway+National+Park",
-      cost: { aud: 0, note: "Free" },
-      transport: []
-    },
-    {
-      time: "11:15", title: "Gibson Steps — Descend the Cliffs",
-      type: "nature",
-      desc: "Steep steps carved into the 70-metre cliff face lead down to the beach at the base of the Apostles formations. Stand on the sand and crane your neck up at two towering limestone sea stacks. The scale is humbling. Check tide times — the beach floods at high tide. Allow 20–30 min.",
-      atmosphere: ["scenic", "coastal", "quiet"],
-      img: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=Gibson+Steps+Port+Campbell+National+Park",
-      cost: { aud: 0, note: "Free" },
-      transport: []
-    },
-    {
-      time: "12:00", title: "The Twelve Apostles",
-      type: "nature",
-      desc: "THE highlight of the entire trip. Eight remaining limestone sea stacks rising 45 metres from the Southern Ocean, sculpted by 10–20 million years of erosion. The lookouts are windswept and dramatic. In late May, you may have them nearly to yourself — in summer, 15,000 people visit daily. Moody winter skies and dramatic light make for the best photography. At dusk, Little Penguins sometimes waddle ashore on the beach below. Open 24/7. Free entry.",
+      desc: "THE highlight of the trip. By taking the reverse route via the inland freeway, you arrive at the 12 Apostles early morning before the big coach tours. Eight limestone sea stacks rising 45m from the Southern Ocean, sculpted over millions of years. In late May, you may have them nearly to yourself. Moody winter skies make for the best photography.",
       atmosphere: ["scenic", "quiet", "coastal"],
       img: "https://images.unsplash.com/photo-1494791368093-85217fbbf8de?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Twelve+Apostles+Port+Campbell+National+Park+Victoria",
@@ -414,9 +274,9 @@ const DAYS = [
       transport: []
     },
     {
-      time: "13:00", title: "Loch Ard Gorge",
+      time: "09:15", title: "Razorback & Loch Ard Gorge",
       type: "nature",
-      desc: "A spectacular gorge formed by millions of years of erosion, named after the clipper ship Loch Ard that wrecked here in 1878 (52 died, only 2 survived — both teenagers). Self-guided walks explain the shipwreck history, geology, and coastal ecology. The turquoise water in the gorge is otherworldly. Note: beach access steps are currently closed due to geological instability, but the clifftop views are still breathtaking.",
+      desc: "The Razorback is a narrow rock formation jutting into the ocean. Then walk to Loch Ard Gorge \u2014 a spectacular gorge named after the clipper ship that wrecked here in 1878 (52 died, 2 survived). Turquoise water framed by towering cliffs. Self-guided walks cover shipwreck history and coastal geology.",
       atmosphere: ["historic", "scenic", "coastal", "quiet"],
       img: "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Loch+Ard+Gorge+Victoria",
@@ -424,60 +284,173 @@ const DAYS = [
       transport: []
     },
     {
-      time: "14:00", title: "Lunch at Port Campbell",
+      time: "10:00", title: "Gibson Steps",
+      type: "nature",
+      desc: "Descend steep steps carved into the 70m cliff face to the beach at the base of two Apostles formations. Stand on the sand and look up \u2014 the scale is humbling. Check tide times; the beach floods at high tide.",
+      atmosphere: ["scenic", "coastal", "quiet"],
+      img: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Gibson+Steps+Port+Campbell+National+Park",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "11:00", title: "Port Campbell Lunch Stop",
       type: "food",
-      desc: "Return to Port Campbell for lunch before heading back. Try 12 Rocks again, or the Port Campbell Takeaway for casual fish & chips overlooking the bay.",
+      desc: "Lunch in the small coastal village of Port Campbell (own expense). Try 12 Rocks Caf\u00e9 or the Port Campbell Takeaway for fish & chips overlooking the bay. The village is tiny, friendly, and unhurried in winter.",
       atmosphere: ["relaxed", "coastal", "local"],
       img: "",
       map: "https://maps.google.com/?q=Port+Campbell+Victoria",
-      cost: { aud: 25, note: "A$20–30 pp" },
+      cost: { aud: 25, note: "A$20\u201330 pp (own expense)" },
       transport: []
     },
     {
-      time: "15:00", title: "London Arch",
+      time: "12:30", title: "Great Otway National Park Rainforest Walk",
       type: "nature",
-      desc: "Formerly “London Bridge” until part of it collapsed in 1990, stranding two tourists on the remaining arch (they were rescued by helicopter). Now a dramatic natural arch perched over crashing waves. A powerful reminder of the coastline’s relentless erosion.",
-      atmosphere: ["scenic", "coastal", "quiet"],
-      img: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=600&h=360&fit=crop",
-      map: "https://maps.google.com/?q=London+Arch+Great+Ocean+Road+Victoria",
+      desc: "Guided walk through ancient Otway Rainforest. Towering Myrtle Beech draped in moss, tree ferns taller than you, the sound of dripping water. In winter, the forest is lush, green, and mystical. A magical contrast to the coastal scenery.",
+      atmosphere: ["quiet", "scenic"],
+      img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Great+Otway+National+Park+Victoria",
+      cost: { aud: 0, note: "Included in tour" },
+      transport: []
+    },
+    {
+      time: "13:30", title: "Kennett River Koala Walk \u2014 Wild Koalas!",
+      type: "nature",
+      desc: "THE best place to see wild koalas on the GOR. Walk along Grey River Road and look up into the eucalyptus forks. Late May is the BEST time: bare branches make koalas much easier to spot, and they descend lower for warmth. Also expect King Parrots and Crimson Rosellas. Otway koala population: ~20,000.",
+      atmosphere: ["wildlife", "quiet", "scenic"],
+      img: "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Kennett+River+Victoria+Koala+Walk",
       cost: { aud: 0, note: "Free" },
       transport: []
     },
     {
-      time: "15:30", title: "The Grotto",
+      time: "14:30", title: "Apollo Bay & Coastal Drive",
       type: "nature",
-      desc: "A natural sinkhole formation with the ocean visible through a natural rock frame. Short walk from the car park. A quieter stop that most group tours skip. Beautiful for photos.",
-      atmosphere: ["scenic", "quiet", "coastal"],
-      img: "",
-      map: "https://maps.google.com/?q=The+Grotto+Great+Ocean+Road+Victoria",
-      cost: { aud: 0, note: "Free" },
+      desc: "Drive through Apollo Bay, a laidback fishing town with a long curved beach. Then continue along the iconic coastal stretch \u2014 Memorial Arch, surf coast beaches, and ocean views. The road hugs the cliffs with the Southern Ocean crashing below.",
+      atmosphere: ["scenic", "coastal", "relaxed"],
+      img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Apollo+Bay+Victoria",
+      cost: { aud: 0, note: "Scenic drive" },
       transport: []
     },
     {
-      time: "16:00", title: "Return Drive to Melbourne (Inland Route)",
-      type: "transport",
-      desc: "The inland route via Colac and the Princes Freeway is ~3 hours to Melbourne CBD. Faster and less winding than the coast road. Your private driver handles everything. Arrive back ~19:00.",
-      atmosphere: [],
-      img: "",
-      map: "",
-      cost: { aud: 0, note: "Included in 2-day tour price" },
+      time: "16:00", title: "Surf Coast Beaches & Return Drive",
+      type: "nature",
+      desc: "Final stops along the surf coast. Then return via the freeway to Melbourne. Arrive back ~19:00.",
+      atmosphere: ["scenic", "coastal"],
+      img: "https://images.unsplash.com/photo-1502680390548-bdbac40e7a78?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Bells+Beach+Victoria",
+      cost: { aud: 0, note: "Included" },
       transport: []
     },
     {
       time: "19:30", title: "Dinner at Supernormal",
       type: "food",
-      desc: "Andrew McConnell’s pan-Asian restaurant on Flinders Lane. Lobster rolls, prawn toast, dumplings, bao, and charcoal grilled dishes. Slick, modern interior with a long bar. A$50–75 pp. Walk-ins welcome.",
+      desc: "Andrew McConnell\u2019s pan-Asian restaurant on Flinders Lane. Lobster rolls, prawn toast, dumplings, bao, and charcoal grilled dishes. Slick, modern interior. A$50\u201375 pp. Walk-ins welcome.",
       atmosphere: ["foodie", "upscale", "busy"],
       img: "",
       map: "https://maps.google.com/?q=Supernormal+Flinders+Lane+Melbourne",
-      cost: { aud: 60, note: "A$50–75 pp" },
+      cost: { aud: 60, note: "A$50\u201375 pp" },
       booking: "https://supernormal.net.au/",
       transport: [
         { mode: "Walk", cost: "Free", time: "8 min from Collins House", note: "" }
       ]
     }
   ],
-  dayCost: { transport: 1100, food: 100, activities: 11, accommodation: 250 }
+  dayCost: { transport: 128, food: 85, activities: 0, accommodation: 250 }
+},
+{
+  num: 4, date: "Thu, 28 May", title: "Melbourne Exploration", theme: "Aquarium, Skydeck, Museum & Richmond",
+  weather: { high: 13, low: 8, icon: "\ud83c\udf2c\ufe0f", desc: "Windy, Partly Cloudy, 13\u00b0C" },
+  activities: [
+    {
+      time: "09:00", title: "Sleep In & Leisurely Breakfast",
+      type: "food",
+      desc: "Recover from yesterday\u2019s 12-hour GOR tour. Take your time \u2014 make breakfast in the apartment kitchen or walk to Degraves Street for a flat white and eggs.",
+      atmosphere: ["relaxed"],
+      img: "",
+      map: "https://maps.google.com/?q=Degraves+Street+Melbourne",
+      cost: { aud: 15, note: "A$12\u201318 pp" },
+      transport: []
+    },
+    {
+      time: "10:30", title: "SEA LIFE Melbourne Aquarium",
+      type: "nature",
+      desc: "Walk through the underwater glass tunnel surrounded by sharks, rays, and giant fish. The Penguin Passport experience lets you suit up in Antarctic gear and meet the resident King and Gentoo Penguins. New Rocky Shores zone. Allow 1.5\u20132 hours. Book online for the cheapest weekday rate.",
+      atmosphere: ["family", "touristy"],
+      img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=SEA+LIFE+Melbourne+Aquarium+King+Street",
+      cost: { aud: 39, note: "From A$39 pp (online weekday advance)" },
+      booking: "https://www.visitsealife.com/melbourne/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "10 min from Collins House", note: "Along the Yarra River" }
+      ]
+    },
+    {
+      time: "12:30", title: "Lunch at South Wharf Promenade",
+      type: "food",
+      desc: "Waterfront dining along the Yarra River at South Wharf. Try Boho (Mexican), Akachochin (Japanese izakaya), or Meat Market (steakhouse). Casual, scenic, and not overly touristy.",
+      atmosphere: ["relaxed", "scenic", "foodie"],
+      img: "",
+      map: "https://maps.google.com/?q=South+Wharf+Promenade+Melbourne",
+      cost: { aud: 30, note: "A$25\u201335 pp" },
+      transport: [
+        { mode: "Walk", cost: "Free", time: "10 min from Aquarium", note: "Along Southbank" }
+      ]
+    },
+    {
+      time: "14:00", title: "Melbourne Museum",
+      type: "culture",
+      desc: "Victoria\u2019s major natural and cultural history museum in Carlton Gardens. Currently hosting: Triceratops: Fate of the Dinosaurs, Our Wondrous Planet, and Empire Power People (Ancient Rome). Children under 16 free. A$18/adult. Allow 2\u20133 hours.",
+      atmosphere: ["quiet", "family", "historic"],
+      img: "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Melbourne+Museum+11+Nicholson+Street+Carlton",
+      cost: { aud: 18, note: "A$18 pp. Under 16 free." },
+      booking: "https://museumsvictoria.com.au/melbournemuseum/tickets/",
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "15 min", note: "Tram along Nicholson St, Free Tram Zone" },
+        { mode: "Uber", cost: "A$10\u201315", time: "8 min", note: "" }
+      ]
+    },
+    {
+      time: "16:30", title: "Eureka Skydeck \u2014 The Edge Experience",
+      type: "culture",
+      desc: "Level 88 of Eureka Tower \u2014 285 metres up. The Edge Experience slides a glass cube 3 metres out from the building with you inside it, suspended 88 floors above the street. Views stretch across Port Phillip Bay, the Dandenong Ranges, and the entire Melbourne skyline. Best visited on a clear afternoon for golden hour light.",
+      atmosphere: ["scenic", "touristy"],
+      img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Eureka+Skydeck+7+Riverside+Quay+Southbank",
+      cost: { aud: 42, note: "A$31\u201342 pp (General + Edge combo)" },
+      booking: "https://www.melbourneskydeck.com.au/",
+      transport: [
+        { mode: "Walk", cost: "Free", time: "15 min from Museum", note: "Or tram to Southbank" },
+        { mode: "Uber", cost: "A$10\u201315", time: "8 min", note: "" }
+      ]
+    },
+    {
+      time: "18:00", title: "Walk Along Southbank Promenade",
+      type: "culture",
+      desc: "Take the Southbank Promenade from Eureka Tower along the Yarra River. Crown\u2019s fire pillars erupt on the hour after dark. Public art installations line the walkway. This is Melbourne\u2019s most photogenic walk at dusk.",
+      atmosphere: ["romantic", "scenic", "relaxed"],
+      img: "https://images.unsplash.com/photo-1545044846-351ba102b6d5?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Southbank+Promenade+Melbourne",
+      cost: { aud: 0, note: "Free" },
+      transport: []
+    },
+    {
+      time: "19:00", title: "Dinner on Victoria Street, Richmond \u2014 Vietnamese",
+      type: "food",
+      desc: "Melbourne\u2019s \"Little Saigon.\" Try Pho Hung Vuong (legendary pho since 1982), Thanh Ha 2 (crispy banh xeo), or Nhu Lan Bakery (best banh mi, A$6.50). Bustling, no-frills, absolutely delicious. A taste of home for Singaporeans.",
+      atmosphere: ["multicultural", "busy", "foodie", "local"],
+      img: "https://images.unsplash.com/photo-1503764654157-72d979d9af2f?w=600&h=360&fit=crop",
+      map: "https://maps.google.com/?q=Victoria+Street+Richmond+Melbourne",
+      cost: { aud: 20, note: "A$15\u201325 pp" },
+      transport: [
+        { mode: "Tram (FREE)", cost: "Free", time: "12 min from Southbank", note: "Tram 78 or 109" },
+        { mode: "Uber", cost: "A$10\u201315", time: "8 min", note: "" }
+      ]
+    }
+  ],
+  dayCost: { transport: 0, food: 65, activities: 99, accommodation: 250 }
 },
 {
   num: 5, date: "Fri, 29 May", title: "Phillip Island Wildlife", theme: "Penguins, Koalas, Seals & Coastal Wildlife",
