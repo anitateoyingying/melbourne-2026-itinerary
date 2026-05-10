@@ -154,24 +154,6 @@ Google Fonts load:
 - Grid of summary items on limestone background
 - Values: JetBrains Mono 16px bold
 
-## Legacy Aliases
-
-The CSS maintains backward-compatible aliases so HTML inline styles continue working:
-
-```
---navy → --bluestone
---gold → --tram-gold
---green → --eucalyptus
---blue → --ocean
---orange → --terracotta
---purple → --plum
---red → --laneway-red
---text → --ink
---muted → --ink-tertiary
---border → --stitch
---shadow → --postcard
-```
-
 ## Design Decisions
 
 - **Dark sidebar kept** — intentional: it frames content like a book binding frames pages, reinforcing the journal metaphor

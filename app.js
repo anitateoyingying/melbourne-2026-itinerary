@@ -1111,11 +1111,11 @@ function renderDays() {
     html += '</div>';
     const totalAUD = d.dayCost.transport + d.dayCost.food + d.dayCost.activities + d.dayCost.accommodation;
     html += `<div class="day-summary"><h3>💰 Day ${d.num} Estimated Cost (per person)</h3><div class="summary-grid">
-      <div class="summary-item"><div class="label">Transport</div><div class="val">A$${d.dayCost.transport} <small style="color:var(--muted)">~S$${toSGD(d.dayCost.transport)}</small></div></div>
-      <div class="summary-item"><div class="label">Food & Drink</div><div class="val">A$${d.dayCost.food} <small style="color:var(--muted)">~S$${toSGD(d.dayCost.food)}</small></div></div>
-      <div class="summary-item"><div class="label">Activities</div><div class="val">A$${d.dayCost.activities} <small style="color:var(--muted)">~S$${toSGD(d.dayCost.activities)}</small></div></div>
-      <div class="summary-item"><div class="label">Accommodation</div><div class="val">A$${d.dayCost.accommodation} <small style="color:var(--muted)">~S$${toSGD(d.dayCost.accommodation)}</small></div></div>
-      <div class="summary-item" style="background:var(--navy);color:#fff;grid-column:1/-1"><div class="label" style="color:var(--gold)">Day Total</div><div class="val" style="color:#fff">A$${totalAUD} <small style="color:var(--gold-light)">~S$${toSGD(totalAUD)}</small></div></div>
+      <div class="summary-item"><div class="label">Transport</div><div class="val">A$${d.dayCost.transport} <small style="color:var(--ink-tertiary)">~S$${toSGD(d.dayCost.transport)}</small></div></div>
+      <div class="summary-item"><div class="label">Food & Drink</div><div class="val">A$${d.dayCost.food} <small style="color:var(--ink-tertiary)">~S$${toSGD(d.dayCost.food)}</small></div></div>
+      <div class="summary-item"><div class="label">Activities</div><div class="val">A$${d.dayCost.activities} <small style="color:var(--ink-tertiary)">~S$${toSGD(d.dayCost.activities)}</small></div></div>
+      <div class="summary-item"><div class="label">Accommodation</div><div class="val">A$${d.dayCost.accommodation} <small style="color:var(--ink-tertiary)">~S$${toSGD(d.dayCost.accommodation)}</small></div></div>
+      <div class="summary-item" style="background:var(--bluestone);color:#fff;grid-column:1/-1"><div class="label" style="color:var(--tram-gold)">Day Total</div><div class="val" style="color:#fff">A$${totalAUD} <small style="color:var(--tram-gold-soft)">~S$${toSGD(totalAUD)}</small></div></div>
     </div></div>`;
     section.innerHTML = html;
     container.appendChild(section);

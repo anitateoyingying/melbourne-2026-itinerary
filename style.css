@@ -52,23 +52,6 @@
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Legacy aliases — referenced by inline styles in HTML */
-  --navy: var(--bluestone);
-  --navy-light: var(--bluestone-light);
-  --gold: var(--tram-gold);
-  --gold-light: var(--tram-gold-soft);
-  --green: var(--eucalyptus);
-  --blue: var(--ocean);
-  --orange: var(--terracotta);
-  --red: var(--laneway-red);
-  --purple: var(--plum);
-  --bg: var(--page);
-  --text: var(--ink);
-  --muted: var(--ink-tertiary);
-  --border: var(--stitch);
-  --radius: var(--r-lg);
-  --shadow: var(--postcard);
-  --shadow-lg: var(--postcard-lift);
 }
 
 /* === RESET & BASE === */
