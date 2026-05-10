@@ -9,7 +9,7 @@ const DAYS = [
     {
       time: "02:30", end: "11:45", title: "Scoot TR58: Singapore → Melbourne",
       type: "transport",
-      desc: "Depart Singapore Changi Terminal 1 at 02:30. Boeing 787-9, 7h15m flight. Arrive Melbourne Tullamarine Terminal 2 at 11:45 local time. Budget food on Scoot is not included — pre-book meals on the Scoot app or eat at Changi before boarding.",
+      desc: "Depart Singapore Changi Terminal 1 at 02:30. Boeing 787-9, 7h15m flight. Arrive Melbourne Tullamarine Terminal 2 at 11:45 local time. Budget food on Scoot is not included -pre-book meals on the Scoot app or eat at Changi before boarding.",
       atmosphere: [],
       img: "https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Melbourne+Airport+Tullamarine",
@@ -19,7 +19,7 @@ const DAYS = [
     {
       time: "12:15", title: "Clear Immigration & Collect Luggage",
       type: "transport",
-      desc: "Melbourne immigration is generally fast for Singapore passports (ETA pre-approved). Allow 30 min for queue + luggage carousel at T2. Free WiFi at MEL airport — connect immediately to request your ride.",
+      desc: "Melbourne immigration is generally fast for Singapore passports (ETA pre-approved). Allow 30 min for queue + luggage carousel at T2. Free WiFi at MEL airport -connect immediately to request your ride.",
       atmosphere: ["busy"],
       img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Melbourne+Airport+Terminal+2",
@@ -33,7 +33,7 @@ const DAYS = [
     {
       time: "13:15", title: "Arrive CBD & Check In",
       type: "transport",
-      desc: "Head to your apartment. Collins House Apartments by CLLIX is at 464 Collins Street — right in the CBD, 5-min walk from Flinders Street Station. Check-in from 2:00 PM. If early, store bags at reception and explore.",
+      desc: "Head to your apartment. Collins House Apartments by CLLIX is at 464 Collins Street -right in the CBD, 5-min walk from Flinders Street Station. Check-in from 2:00 PM. If early, store bags at reception and explore.",
       atmosphere: [],
       img: "https://images.unsplash.com/photo-1524820197278-540916411e20?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Collins+House+Apartments+CLLIX+464+Collins+Street+Melbourne",
@@ -56,7 +56,7 @@ const DAYS = [
     {
       time: "15:30", title: "Flinders Street Station",
       type: "culture",
-      desc: "Melbourne’s most iconic building. The butter-yellow Edwardian Baroque facade with its famous row of clocks is THE image of Melbourne. Best photographed from the steps of Federation Square across the street. Stunning at dusk when the facade is illuminated. The station is fully operational — 35+ million passengers annually.",
+      desc: "Melbourne’s most iconic building. The butter-yellow Edwardian Baroque facade with its famous row of clocks is THE image of Melbourne. Best photographed from the steps of Federation Square across the street. Stunning at dusk when the facade is illuminated. The station is fully operational -35+ million passengers annually.",
       atmosphere: ["historic", "busy", "touristy"],
       img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Flinders+Street+Station+Melbourne",
@@ -81,7 +81,7 @@ const DAYS = [
     {
       time: "17:00", title: "Hosier Lane Street Art",
       type: "culture",
-      desc: "A narrow cobblestone laneway completely blanketed in street art, graffiti, murals, and paste-ups. The art changes constantly — new pieces appear daily. Look for Matt Adnate’s towering 23-metre portrait of an Indigenous boy on McDonald House. The lane smells of spray paint and hums with photographers. Also explore nearby AC/DC Lane.",
+      desc: "A narrow cobblestone laneway completely blanketed in street art, graffiti, murals, and paste-ups. The art changes constantly -new pieces appear daily. Look for Matt Adnate’s towering 23-metre portrait of an Indigenous boy on McDonald House. The lane smells of spray paint and hums with photographers. Also explore nearby AC/DC Lane.",
       atmosphere: ["artsy", "bohemian", "grungy", "touristy"],
       img: "https://images.unsplash.com/photo-1562932831-afcfe735a7e5?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Hosier+Lane+Melbourne",
@@ -105,7 +105,7 @@ const DAYS = [
     {
       time: "18:30", title: "Dinner at Chin Chin",
       type: "food",
-      desc: "Southeast Asian-inspired restaurant on Flinders Lane. Bold, punchy flavours — pad see ew, green papaya salad, whole roasted cauliflower, betel leaf wraps. No reservations taken, walk-in only. Expect a 20–40 min wait (grab a drink at GoGo Bar upstairs while waiting). Always buzzing, loud, energetic. A Melbourne institution.",
+      desc: "Southeast Asian-inspired restaurant on Flinders Lane. Bold, punchy flavours -pad see ew, green papaya salad, whole roasted cauliflower, betel leaf wraps. No reservations taken, walk-in only. Expect a 20–40 min wait (grab a drink at GoGo Bar upstairs while waiting). Always buzzing, loud, energetic. A Melbourne institution.",
       atmosphere: ["busy", "foodie", "multicultural"],
       img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Chin+Chin+Melbourne+Flinders+Lane",
@@ -159,7 +159,7 @@ const DAYS = [
     {
       time: "11:00", title: "State Library of Victoria",
       type: "culture",
-      desc: "One of the world’s most beautiful libraries. The La Trobe Reading Room is a breathtaking octagonal domed space flooded with natural light. Free entry. Small exhibitions rotate. The front lawn is a favourite local hangout. Founded 1854 — one of Australia’s oldest cultural institutions.",
+      desc: "One of the world’s most beautiful libraries. The La Trobe Reading Room is a breathtaking octagonal domed space flooded with natural light. Free entry. Small exhibitions rotate. The front lawn is a favourite local hangout. Founded 1854 -one of Australia’s oldest cultural institutions.",
       atmosphere: ["quiet", "historic", "artsy"],
       img: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=State+Library+of+Victoria+Melbourne",
@@ -183,7 +183,7 @@ const DAYS = [
     {
       time: "12:30", title: "Lunch at HuTong Dumpling Bar",
       type: "food",
-      desc: "Legendary xiao long bao in the heart of Chinatown. Hand-folded soup dumplings, pan-fried pork buns, and dan dan noodles. Small, crowded space with communal tables — the food is worth the squeeze. Often has a queue at peak lunch. Alternative: Flower Drum for upscale Cantonese (booking essential, A$100+ pp).",
+      desc: "Legendary xiao long bao in the heart of Chinatown. Hand-folded soup dumplings, pan-fried pork buns, and dan dan noodles. Small, crowded space with communal tables -the food is worth the squeeze. Often has a queue at peak lunch. Alternative: Flower Drum for upscale Cantonese (booking essential, A$100+ pp).",
       atmosphere: ["busy", "foodie", "local"],
       img: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=HuTong+Dumpling+Bar+Melbourne",
@@ -195,7 +195,7 @@ const DAYS = [
     {
       time: "14:00", title: "NGV International (National Gallery of Victoria)",
       type: "culture",
-      desc: "Australia’s oldest and most visited art gallery. The permanent collection is FREE and world-class: European Old Masters, Asian art, photography, Australian art. The water wall entrance is iconic. Allow 2–3 hours. Check for paid special exhibitions. The CARTIER: Melbourne Winter Masterpieces show opens June 12 — just after your trip.",
+      desc: "Australia’s oldest and most visited art gallery. The permanent collection is FREE and world-class: European Old Masters, Asian art, photography, Australian art. The water wall entrance is iconic. Allow 2–3 hours. Check for paid special exhibitions. The CARTIER: Melbourne Winter Masterpieces show opens June 12 -just after your trip.",
       atmosphere: ["quiet", "artsy", "upscale"],
       img: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=NGV+International+180+St+Kilda+Road+Melbourne",
@@ -235,7 +235,7 @@ const DAYS = [
     {
       time: "19:00", title: "Dinner at Tipo 00",
       type: "food",
-      desc: "Award-winning handmade pasta restaurant on Little Bourke Street. Every strand of spaghetti, every sheet of lasagna is made fresh daily. The malfaldine with duck ragù is legendary. Intimate space, open kitchen, impressive wine list focused on Italian varietals. Book ahead — very popular. A$60–80 pp for pasta + wine.",
+      desc: "Award-winning handmade pasta restaurant on Little Bourke Street. Every strand of spaghetti, every sheet of lasagna is made fresh daily. The malfaldine with duck ragù is legendary. Intimate space, open kitchen, impressive wine list focused on Italian varietals. Book ahead -very popular. A$60–80 pp for pasta + wine.",
       atmosphere: ["foodie", "romantic", "upscale"],
       img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Tipo+00+361+Little+Bourke+Street+Melbourne",
@@ -253,9 +253,9 @@ const DAYS = [
   weather: { high: 14, low: 9, icon: "🌧️", desc: "Showers & Wind, 13–15°C" },
   activities: [
     {
-      time: "06:30", title: "Hit The Road Boutique Tour — Pickup",
+      time: "06:30", title: "Hit The Road Boutique Tour -Pickup",
       type: "transport",
-      desc: "Small group tour (max 12 people) in a luxury Mercedes Sprinter. Pickup from 196 Flinders St at 06:30 (5-min walk from Collins House). This tour uses the REVERSE route — you visit the 12 Apostles first thing in the morning before the big coaches arrive. 5,000+ five-star reviews. Promo code BOUTIQUE_10 saves A$10/pp.",
+      desc: "Small group tour (max 12 people) in a luxury Mercedes Sprinter. Pickup from 196 Flinders St at 06:30 (5-min walk from Collins House). This tour uses the REVERSE route -you visit the 12 Apostles first thing in the morning before the big coaches arrive. 5,000+ five-star reviews. Promo code BOUTIQUE_10 saves A$10/pp.",
       atmosphere: [],
       img: "https://images.unsplash.com/photo-1449965408869-ebd3fee49e6e?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=196+Flinders+Street+Melbourne",
@@ -264,7 +264,7 @@ const DAYS = [
       transport: []
     },
     {
-      time: "08:30", title: "Twelve Apostles (Reverse Route — Before the Crowds)",
+      time: "08:30", title: "Twelve Apostles (Reverse Route -Before the Crowds)",
       type: "nature",
       desc: "THE highlight of the trip. By taking the reverse route via the inland freeway, you arrive at the 12 Apostles early morning before the big coach tours. Eight limestone sea stacks rising 45m from the Southern Ocean, sculpted over millions of years. In late May, you may have them nearly to yourself. Moody winter skies make for the best photography.",
       atmosphere: ["scenic", "quiet", "coastal"],
@@ -459,7 +459,7 @@ const DAYS = [
     {
       time: "08:00", title: "Breakfast at Hotel & Prepare for a Long Day",
       type: "food",
-      desc: "Have a good breakfast — it’s a full 12–14 hour day. Pack warm layers for the evening Penguin Parade (you’ll be sitting outdoors at sunset in 8°C). Beanie, scarf, and gloves recommended.",
+      desc: "Have a good breakfast -it’s a full 12–14 hour day. Pack warm layers for the evening Penguin Parade (you’ll be sitting outdoors at sunset in 8°C). Beanie, scarf, and gloves recommended.",
       atmosphere: [],
       img: "",
       map: "",
@@ -504,7 +504,7 @@ const DAYS = [
     {
       time: "14:00", title: "Koala Conservation Centre",
       type: "nature",
-      desc: "Elevated boardwalks through natural bushland bring you to eye-level with koalas in their natural habitat. Rangers share fascinating facts about koala biology, diet, and conservation. You’ll get very close — some koalas sit at arm’s length. Allow 1 hour.",
+      desc: "Elevated boardwalks through natural bushland bring you to eye-level with koalas in their natural habitat. Rangers share fascinating facts about koala biology, diet, and conservation. You’ll get very close -some koalas sit at arm’s length. Allow 1 hour.",
       atmosphere: ["wildlife", "quiet", "family"],
       img: "https://images.unsplash.com/photo-1579168730446-c696d62a2ea7?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Koala+Conservation+Centre+Phillip+Island",
@@ -515,7 +515,7 @@ const DAYS = [
     {
       time: "15:15", title: "The Nobbies & Seal Rocks",
       type: "nature",
-      desc: "A windswept boardwalk along dramatic cliff tops at the western tip of Phillip Island. From here, you can see Seal Rocks — home to Australia’s largest fur seal colony (~25,000 seals). Bring binoculars. The boardwalk views are spectacular. Free entry. Allow 45 min.",
+      desc: "A windswept boardwalk along dramatic cliff tops at the western tip of Phillip Island. From here, you can see Seal Rocks -home to Australia’s largest fur seal colony (~25,000 seals). Bring binoculars. The boardwalk views are spectacular. Free entry. Allow 45 min.",
       atmosphere: ["scenic", "coastal", "wildlife", "quiet"],
       img: "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=The+Nobbies+Phillip+Island",
@@ -523,9 +523,9 @@ const DAYS = [
       transport: []
     },
     {
-      time: "16:15", title: "Penguin Parade — Underground Viewing",
+      time: "16:15", title: "Penguin Parade -Underground Viewing",
       type: "nature",
-      desc: "The main event. Every evening at sunset, hundreds of Little (Fairy) Penguins waddle up the beach from the ocean to their burrows in the sand dunes. In late May, sunset is ~5:15 PM. Arrive early to get settled. Underground Viewing (A$103 pp) lets you watch through glass panels at penguin eye-level as they walk right past you — an incredible, intimate experience. No cameras or recording devices allowed. Dress VERY warm (8°C with wind chill).",
+      desc: "The main event. Every evening at sunset, hundreds of Little (Fairy) Penguins waddle up the beach from the ocean to their burrows in the sand dunes. In late May, sunset is ~5:15 PM. Arrive early to get settled. Underground Viewing (A$103 pp) lets you watch through glass panels at penguin eye-level as they walk right past you -an incredible, intimate experience. No cameras or recording devices allowed. Dress VERY warm (8°C with wind chill).",
       atmosphere: ["wildlife", "scenic", "quiet", "romantic"],
       img: "https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Phillip+Island+Penguin+Parade",
@@ -573,7 +573,7 @@ const DAYS = [
     {
       time: "08:45", title: "Train to Belgrave",
       type: "transport",
-      desc: "Take the Belgrave line from Flinders Street Station directly to Belgrave — the terminus. ~75 min ride through Melbourne’s eastern suburbs into the Dandenong Ranges. FREE on public transport this week (May 25–31).",
+      desc: "Take the Belgrave line from Flinders Street Station directly to Belgrave -the terminus. ~75 min ride through Melbourne’s eastern suburbs into the Dandenong Ranges. FREE on public transport this week (May 25–31).",
       atmosphere: [],
       img: "",
       map: "https://maps.google.com/?q=Belgrave+Railway+Station+Victoria",
@@ -583,9 +583,9 @@ const DAYS = [
       ]
     },
     {
-      time: "10:00", title: "Puffing Billy Railway — Belgrave to Lakeside",
+      time: "10:00", title: "Puffing Billy Railway -Belgrave to Lakeside",
       type: "culture",
-      desc: "Australia’s favourite heritage steam train. The century-old locomotive chugs through towering mountain ash forests, across the iconic Monbulk Creek Trestle Bridge. Open-air carriages let you dangle your legs over the side (traditional, but cold in winter — dress warm!). The 13 km journey to Lakeside takes ~1 hour. At Lakeside, the train pauses for 30 min before returning. MUST pre-book. No tickets sold on the day.",
+      desc: "Australia’s favourite heritage steam train. The century-old locomotive chugs through towering mountain ash forests, across the iconic Monbulk Creek Trestle Bridge. Open-air carriages let you dangle your legs over the side (traditional, but cold in winter -dress warm!). The 13 km journey to Lakeside takes ~1 hour. At Lakeside, the train pauses for 30 min before returning. MUST pre-book. No tickets sold on the day.",
       atmosphere: ["scenic", "historic", "family"],
       img: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Puffing+Billy+Railway+Belgrave",
@@ -626,7 +626,7 @@ const DAYS = [
     {
       time: "17:00", title: "Chapel Street & South Yarra Browsing",
       type: "culture",
-      desc: "Stretch your legs with a stroll down Chapel Street. The South Yarra end is upscale — designer boutiques, fashion flagships, chic wine bars. Walking south toward Prahran and Windsor, it becomes edgier with vintage stores, streetwear, and quirky bars. Four kilometres of Melbourne fashion culture.",
+      desc: "Stretch your legs with a stroll down Chapel Street. The South Yarra end is upscale -designer boutiques, fashion flagships, chic wine bars. Walking south toward Prahran and Windsor, it becomes edgier with vintage stores, streetwear, and quirky bars. Four kilometres of Melbourne fashion culture.",
       atmosphere: ["upscale", "local", "artsy"],
       img: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Chapel+Street+South+Yarra+Melbourne",
@@ -682,7 +682,7 @@ const DAYS = [
     {
       time: "10:30", title: "St Kilda Beach & Pier",
       type: "nature",
-      desc: "Melbourne’s most famous beach suburb. Walk along the palm-tree-lined foreshore to St Kilda Pier. At the end of the pier’s breakwater, a colony of Little Penguins nests in the rock crevices — they’re best seen at dusk, but you may spot a few during the day. The pier has sweeping views of the city skyline. Luna Park’s giant grinning mouth entrance is just along the Esplanade.",
+      desc: "Melbourne’s most famous beach suburb. Walk along the palm-tree-lined foreshore to St Kilda Pier. At the end of the pier’s breakwater, a colony of Little Penguins nests in the rock crevices -they’re best seen at dusk, but you may spot a few during the day. The pier has sweeping views of the city skyline. Luna Park’s giant grinning mouth entrance is just along the Esplanade.",
       atmosphere: ["bohemian", "relaxed", "coastal", "touristy"],
       img: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=St+Kilda+Beach+Melbourne",
@@ -716,9 +716,9 @@ const DAYS = [
       transport: []
     },
     {
-      time: "14:00", title: "Fitzroy — Brunswick Street",
+      time: "14:00", title: "Fitzroy -Brunswick Street",
       type: "culture",
-      desc: "Melbourne’s bohemian heartland. Brunswick Street is a non-stop strip of vintage shops, record stores, independent bookshops, tattoo parlours, quirky bars, and cafés. Street art covers every surface. The vibe is proudly grungy yet stylish — Japanese cafés next to dive bars, fashion studios next to Ethiopian restaurants. This is where Melbourne’s creative class lives.",
+      desc: "Melbourne’s bohemian heartland. Brunswick Street is a non-stop strip of vintage shops, record stores, independent bookshops, tattoo parlours, quirky bars, and cafés. Street art covers every surface. The vibe is proudly grungy yet stylish -Japanese cafés next to dive bars, fashion studios next to Ethiopian restaurants. This is where Melbourne’s creative class lives.",
       atmosphere: ["bohemian", "artsy", "grungy", "multicultural", "local"],
       img: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&h=360&fit=crop",
       map: "https://maps.google.com/?q=Brunswick+Street+Fitzroy+Melbourne",
@@ -729,7 +729,7 @@ const DAYS = [
       ]
     },
     {
-      time: "16:00", title: "Collingwood — Smith Street",
+      time: "16:00", title: "Collingwood -Smith Street",
       type: "culture",
       desc: "Named the “coolest neighbourhood in the world” by Time Out. Grittier than Fitzroy, less polished. Smith Street is the main artery: Vietnamese bakeries sit beside rooftop bars, independent galleries hide in converted warehouses. Visit Collingwood Yards (creative hub), browse independent boutiques, or duck into an anonymous-looking door that turns out to be a natural wine bar.",
       atmosphere: ["bohemian", "grungy", "artsy", "multicultural"],
@@ -775,7 +775,7 @@ const DAYS = [
     {
       time: "07:30", title: "Breakfast at Hotel",
       type: "food",
-      desc: "Fuel up — long day ahead. Self-catering or quick coffee from a nearby café.",
+      desc: "Fuel up -long day ahead. Self-catering or quick coffee from a nearby café.",
       atmosphere: [],
       img: "",
       map: "",
@@ -785,7 +785,7 @@ const DAYS = [
     {
       time: "08:30", title: "Train to Frankston",
       type: "transport",
-      desc: "Frankston line from Flinders Street Station to Frankston (~60 min). From June 1, public transport is HALF PRICE (daily cap A$5.70, 2-hour fare A$2.85). You’ll need a Myki card — buy one at any 7-Eleven for A$6 + top up.",
+      desc: "Frankston line from Flinders Street Station to Frankston (~60 min). From June 1, public transport is HALF PRICE (daily cap A$5.70, 2-hour fare A$2.85). You’ll need a Myki card -buy one at any 7-Eleven for A$6 + top up.",
       atmosphere: [],
       img: "",
       map: "https://maps.google.com/?q=Frankston+Station+Victoria",
@@ -797,7 +797,7 @@ const DAYS = [
     {
       time: "09:30", title: "Bus 788 to Rye + Uber to Hot Springs",
       type: "transport",
-      desc: "Bus 788 from Frankston Station along the coast to Rye (~50 min, Myki fare). Then Uber/taxi from Rye to Peninsula Hot Springs (~15 min, A$30–40). Or pre-book the Hot Springs shuttle (Tue/Sat only — not available Monday).",
+      desc: "Bus 788 from Frankston Station along the coast to Rye (~50 min, Myki fare). Then Uber/taxi from Rye to Peninsula Hot Springs (~15 min, A$30–40). Or pre-book the Hot Springs shuttle (Tue/Sat only -not available Monday).",
       atmosphere: [],
       img: "",
       map: "https://maps.google.com/?q=Peninsula+Hot+Springs+Fingal+Victoria",
@@ -807,7 +807,7 @@ const DAYS = [
       ]
     },
     {
-      time: "10:30", title: "Peninsula Hot Springs — Weekday Getaway for Two",
+      time: "10:30", title: "Peninsula Hot Springs -Weekday Getaway for Two",
       type: "nature",
       desc: "20+ open-air geothermal pools ranging from 36–43°C, set in lush bushland. The Weekday Getaway for Two (A$235) includes Bath House bathing + pizzas & juice for both. Soak in the hilltop pool for panoramic views across the green hills. In winter, the steam rising from the hot water into the cool air is magical. Adults-only (16+). Towel, robe, locker hire included. Allow 3–4 hours to fully relax.",
       atmosphere: ["relaxed", "romantic", "scenic", "quiet"],
@@ -826,7 +826,7 @@ const DAYS = [
       map: "https://maps.google.com/?q=Sorrento+Victoria+Australia",
       cost: { aud: 0, note: "Free to explore (wine tasting ~A$10–20)" },
       transport: [
-        { mode: "Uber", cost: "A$25–35", time: "20 min from Hot Springs", note: "Pre-book return Uber — driver availability can be limited on the Peninsula" }
+        { mode: "Uber", cost: "A$25–35", time: "20 min from Hot Springs", note: "Pre-book return Uber -driver availability can be limited on the Peninsula" }
       ]
     },
     {
@@ -845,7 +845,7 @@ const DAYS = [
     {
       time: "18:00", title: "Rest & Refresh at Hotel",
       type: "transport",
-      desc: "Freshen up before dinner. You’ve had a relaxing spa day — carry the zen into the evening.",
+      desc: "Freshen up before dinner. You’ve had a relaxing spa day -carry the zen into the evening.",
       atmosphere: [],
       img: "",
       map: "",
@@ -909,7 +909,7 @@ const DAYS = [
       ]
     },
     {
-      time: "14:00", title: "Shopping — Emporium Melbourne & Melbourne Central",
+      time: "14:00", title: "Shopping -Emporium Melbourne & Melbourne Central",
       type: "culture",
       desc: "Connected premium shopping centres in the CBD. Emporium has high-end fashion (Saba, Scanlan Theodore, Country Road), homewares, and a rooftop dining precinct. Melbourne Central has the heritage shot tower preserved under a glass cone. Browse Australian brands for souvenirs: R.M. Williams (boots), Aesop (skincare, born in Melbourne), T2 Tea.",
       atmosphere: ["busy", "upscale"],
@@ -947,7 +947,7 @@ const DAYS = [
     {
       time: "19:00", title: "Farewell Dinner at Flower Drum",
       type: "food",
-      desc: "Melbourne’s legendary Cantonese restaurant, operating since 1975 on Market Lane in Chinatown. Peking duck (carved tableside), mud crab with XO sauce, pipis with black bean sauce. Impeccable white-tablecloth service. A$100–150 pp. Book well ahead — this is Melbourne’s most iconic restaurant. A fitting farewell to the city.",
+      desc: "Melbourne’s legendary Cantonese restaurant, operating since 1975 on Market Lane in Chinatown. Peking duck (carved tableside), mud crab with XO sauce, pipis with black bean sauce. Impeccable white-tablecloth service. A$100–150 pp. Book well ahead -this is Melbourne’s most iconic restaurant. A fitting farewell to the city.",
       atmosphere: ["upscale", "foodie", "historic"],
       img: "",
       map: "https://maps.google.com/?q=Flower+Drum+17+Market+Lane+Melbourne",
@@ -1074,7 +1074,7 @@ function renderDays() {
     const section = document.createElement('div');
     section.className = 'day-content';
     section.id = `day-${d.num}`;
-    let html = `<div class="day-header"><h2>Day ${d.num}: ${d.title}</h2><div class="day-subtitle">${d.date} &mdash; ${d.theme}</div><div class="day-weather">${d.weather.icon} ${d.weather.desc} &bull; High ${d.weather.high}&deg;C / Low ${d.weather.low}&deg;C</div></div>`;
+    let html = `<div class="day-header"><h2>Day ${d.num}: ${d.title}</h2><div class="day-subtitle">${d.date} &bull; ${d.theme}</div><div class="day-weather">${d.weather.icon} ${d.weather.desc} &bull; High ${d.weather.high}&deg;C / Low ${d.weather.low}&deg;C</div></div>`;
     html += '<div class="timeline">';
     d.activities.forEach(a => {
       if (!a.title) return;
@@ -1141,10 +1141,42 @@ function calculateTripTotals() {
   document.getElementById('total-grand-sgd-2x').textContent = `~S$${toSGD(grand * 2)}`;
 }
 
+function initChecklist() {
+  const STORAGE_KEY = 'melb2026_bookings';
+  const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+  if (!checkboxes.length) return;
+
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  checkboxes.forEach(cb => {
+    if (saved[cb.id]) cb.checked = true;
+  });
+
+  function updateProgress() {
+    const total = checkboxes.length;
+    const checked = document.querySelectorAll('.checklist-item input[type="checkbox"]:checked').length;
+    const bar = document.querySelector('.checklist-progress-bar');
+    const text = document.querySelector('.checklist-progress-text');
+    if (bar) bar.style.width = `${(checked / total) * 100}%`;
+    if (text) text.textContent = `${checked} / ${total} booked`;
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      const state = {};
+      checkboxes.forEach(c => { if (c.checked) state[c.id] = true; });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateProgress();
+    });
+  });
+
+  updateProgress();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderSidebar();
   renderDays();
   calculateTripTotals();
+  initChecklist();
   document.getElementById('hamburger').addEventListener('click', () => {
     document.querySelector('.sidebar').classList.toggle('open');
     document.querySelector('.sidebar-overlay').classList.toggle('open');
