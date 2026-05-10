@@ -43,22 +43,23 @@
         <div class="hero-meta-item">📅 25 May to 3 Jun 2026</div>
         <div class="hero-meta-item">👫 2 Adults</div>
       </div>
+      <div class="day-counter" id="day-counter"></div>
     </div>
 
     <!-- Trip Essentials -->
     <h3 class="section-heading">📌 Trip Essentials</h3>
     <div class="overview-grid">
-      <div class="overview-card card-accent-eucalyptus">
+      <div class="overview-card">
         <h3>🎫 Public Transport</h3>
         <div class="value">FREE May 25-31</div>
         <div class="detail">All trains, trams, and buses across Victoria are completely free during the first 7 days of your trip. Jun 1-3: half price, daily cap A$5.70. Saves A$200+ over the trip.</div>
       </div>
-      <div class="overview-card card-accent-ocean">
+      <div class="overview-card">
         <h3>🌤️ Weather</h3>
         <div class="value">8-15°C (Autumn)</div>
         <div class="detail">Late May in Melbourne is autumn/early winter. Expect frequent showers and "four seasons in one day." Pack warm layers, waterproof jacket, scarf, beanie, and comfortable walking shoes.</div>
       </div>
-      <div class="overview-card card-accent-gold">
+      <div class="overview-card">
         <h3>💱 Exchange Rate</h3>
         <div class="value">1 AUD = 0.915 SGD</div>
         <div class="detail">A$100 = S$91.50 &bull; A$500 = S$457.50. Source: May 2026 market rate.</div>
@@ -95,12 +96,12 @@
     <div class="accom-strip-wrapper">
       <div class="accom-strip">
 
-        <div class="accom-card recommended">
-          <img class="accom-card-img" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=250&fit=crop" alt="Collins House apartment interior">
+        <div class="accom-card recommended" data-accom="collins-house">
+          <img class="accom-card-img" src="https://ak-d.tripcdn.com/images/20031b000001a2ucn48BF_R_960_660_R5_D.jpg" alt="Collins House by CLLIX">
           <div class="accom-card-body">
             <span class="badge">Recommended</span>
             <h4>Collins House by CLLIX</h4>
-            <p class="accom-addr">464 Collins St, Melbourne CBD</p>
+            <p class="accom-addr">464 Collins St, Melbourne CBD &bull; 500m to city centre</p>
             <div class="accom-price">A$160-350/night</div>
             <div class="accom-rating">★ 9.0/10 (Trip.com)</div>
             <ul>
@@ -119,12 +120,12 @@
           </div>
         </div>
 
-        <div class="accom-card">
-          <img class="accom-card-img" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=250&fit=crop" alt="Adina apartment interior">
+        <div class="accom-card" data-accom="adina-flinders">
+          <img class="accom-card-img" src="https://cf.bstatic.com/xdata/images/hotel/max500/558206743.jpg?k=955f840e0c74147d90aa0b68f2bf65a1db79aeeadb0343e658c8cf92320a4e28&o=" alt="Adina Apartment Hotel Melbourne on Flinders">
           <div class="accom-card-body">
             <span class="badge" style="background:var(--ocean);color:#fff">Best Location</span>
             <h4>Adina on Flinders</h4>
-            <p class="accom-addr">88 Flinders St, Melbourne CBD</p>
+            <p class="accom-addr">88 Flinders St, Melbourne CBD &bull; 200m to city centre</p>
             <div class="accom-price">A$125-280/night</div>
             <div class="accom-rating">★ Highly rated (Booking.com)</div>
             <ul>
@@ -142,11 +143,11 @@
           </div>
         </div>
 
-        <div class="accom-card">
-          <img class="accom-card-img" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=250&fit=crop" alt="Oakwood apartment interior">
+        <div class="accom-card" data-accom="oakwood-premier">
+          <img class="accom-card-img" src="https://cf.bstatic.com/xdata/images/hotel/max500/349480071.jpg?k=caad30e24e3281bb44097ea7a106821f9d648e5bed8f524da36a08fd1f50a544&o=" alt="Oakwood Premier Melbourne">
           <div class="accom-card-body">
             <h4>Oakwood Premier</h4>
-            <p class="accom-addr">202 Normanby Rd, Southbank</p>
+            <p class="accom-addr">202 Normanby Rd, Southbank &bull; 1.5 km to city centre</p>
             <div class="accom-price">A$136-500/night</div>
             <div class="accom-rating">★ 8.9/10 (Booking.com)</div>
             <ul>
@@ -164,12 +165,12 @@
           </div>
         </div>
 
-        <div class="accom-card">
-          <img class="accom-card-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=250&fit=crop" alt="Milano apartment interior">
+        <div class="accom-card" data-accom="milano">
+          <img class="accom-card-img" src="https://cf.bstatic.com/xdata/images/hotel/max500/316022015.jpg?k=85cfdabe79a1c6d0ef09f4b0019608a9ae8cf6dcf3d77e4741c8afb68089d36d&o=" alt="Milano Serviced Apartments Melbourne">
           <div class="accom-card-body">
             <span class="badge" style="background:var(--eucalyptus);color:#fff">Best Amenities</span>
             <h4>Milano Serviced Apartments</h4>
-            <p class="accom-addr">8 Franklin St, Melbourne CBD</p>
+            <p class="accom-addr">8 Franklin St, Melbourne CBD &bull; 800m to city centre</p>
             <div class="accom-price">A$100-250/night</div>
             <div class="accom-rating">★ 7.6/10 (Booking.com)</div>
             <ul>
@@ -187,12 +188,12 @@
           </div>
         </div>
 
-        <div class="accom-card">
-          <img class="accom-card-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=250&fit=crop" alt="Quest Docklands apartment">
+        <div class="accom-card" data-accom="quest-docklands">
+          <img class="accom-card-img" src="https://ak-d.tripcdn.com/images/0222u12000aqgeo3wA06D_R_960_660_R5_D.jpg" alt="Quest Docklands Melbourne">
           <div class="accom-card-body">
             <span class="badge" style="background:var(--eucalyptus);color:#fff">Best Value</span>
             <h4>Quest Docklands</h4>
-            <p class="accom-addr">750 Bourke St, Docklands</p>
+            <p class="accom-addr">750 Bourke St, Docklands &bull; 1.8 km to city centre</p>
             <div class="accom-price">A$80-200/night</div>
             <div class="accom-rating">★ 8.7/10 (Booking.com)</div>
             <ul>
@@ -213,43 +214,11 @@
       </div>
     </div>
 
+    <button class="accom-deselect" id="accom-deselect">Clear accommodation selection</button>
+
     <div class="note-callout tip">
       <span class="icon">💡</span>
       <div><strong>Top pick: Collins House.</strong> Most central for walking to CBD attractions. Full kitchen and laundry in every apartment. Cheapest per-night in CBD. Free Tram Zone stops directly outside.</div>
-    </div>
-
-    <!-- Budget -->
-    <h3 class="section-heading">💰 Estimated Trip Budget (Per Person)</h3>
-    <div class="overview-grid">
-      <div class="overview-card">
-        <h3>🚌 Transport</h3>
-        <div class="value" id="total-transport">-</div>
-        <div class="detail">Airport transfers, Uber/DiDi, SkyBus, Myki. Free PT May 25-31, half-price Jun 1-3.</div>
-      </div>
-      <div class="overview-card">
-        <h3>🍽️ Food &amp; Drink</h3>
-        <div class="value" id="total-food">-</div>
-        <div class="detail">Self-catering breakfasts, cafe lunches, restaurant dinners, coffee.</div>
-      </div>
-      <div class="overview-card">
-        <h3>🎫 Activities &amp; Attractions</h3>
-        <div class="value" id="total-activities">-</div>
-        <div class="detail">GOR boutique tour, Penguin Parade, Puffing Billy, Hot Springs, Zoo, Skydeck, etc.</div>
-      </div>
-      <div class="overview-card">
-        <h3>🏨 Accommodation</h3>
-        <div class="value" id="total-accommodation">-</div>
-        <div class="detail">9 nights at Collins House (A$200-300/night avg). All nights in Melbourne CBD.</div>
-      </div>
-    </div>
-    <div class="overview-grid" style="padding-top:0">
-      <div class="overview-card" style="background:var(--bluestone);color:#fff;grid-column:1/-1">
-        <h3 style="color:var(--tram-gold)">Estimated Trip Total</h3>
-        <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:baseline">
-          <div><div class="value" style="color:#fff;font-size:24px"><span id="total-grand-aud">-</span> <span style="font-size:14px;color:var(--tram-gold-soft)" id="total-grand-sgd">-</span></div><div class="detail" style="color:rgba(255,255,255,.6)">Per Person</div></div>
-          <div><div class="value" style="color:#fff;font-size:24px"><span id="total-grand-aud-2x">-</span> <span style="font-size:14px;color:var(--tram-gold-soft)" id="total-grand-sgd-2x">-</span></div><div class="detail" style="color:rgba(255,255,255,.6)">For 2 People</div></div>
-        </div>
-      </div>
     </div>
 
     <!-- Booking Checklist -->
@@ -434,6 +403,40 @@
             <tr style="border-top:1px solid #E8E0D4;background:#FAF6EE"><td style="padding:10px 16px;font-weight:600">10</td><td style="padding:10px 16px">Wed 3 Jun</td><td style="padding:10px 16px">Departure</td><td style="padding:10px 16px">Final breakfast, checkout, SkyBus/Uber to airport, TR59 departs 13:00</td></tr>
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <!-- Budget (at the bottom) -->
+    <h3 class="section-heading">💰 Estimated Trip Budget (Per Person)</h3>
+    <div class="overview-grid">
+      <div class="overview-card">
+        <h3>🚌 Transport</h3>
+        <div class="value" id="total-transport">-</div>
+        <div class="detail">Airport transfers, Uber/DiDi, SkyBus, Myki. Free PT May 25-31, half-price Jun 1-3.</div>
+      </div>
+      <div class="overview-card">
+        <h3>🍽️ Food &amp; Drink</h3>
+        <div class="value" id="total-food">-</div>
+        <div class="detail">Self-catering breakfasts, cafe lunches, restaurant dinners, coffee.</div>
+      </div>
+      <div class="overview-card">
+        <h3>🎫 Activities &amp; Attractions</h3>
+        <div class="value" id="total-activities">-</div>
+        <div class="detail">GOR boutique tour, Penguin Parade, Puffing Billy, Hot Springs, Zoo, Skydeck, etc.</div>
+      </div>
+      <div class="overview-card">
+        <h3>🏨 Accommodation</h3>
+        <div class="value" id="total-accommodation">-</div>
+        <div class="detail">9 nights at Collins House (A$200-300/night avg). All nights in Melbourne CBD.</div>
+      </div>
+    </div>
+    <div class="overview-grid" style="padding-top:0">
+      <div class="overview-card" style="background:var(--bluestone);color:#fff;grid-column:1/-1">
+        <h3 style="color:var(--tram-gold)">Estimated Trip Total</h3>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:baseline">
+          <div><div class="value" style="color:#fff;font-size:24px"><span id="total-grand-aud">-</span> <span style="font-size:14px;color:var(--tram-gold-soft)" id="total-grand-sgd">-</span></div><div class="detail" style="color:rgba(255,255,255,.6)">Per Person</div></div>
+          <div><div class="value" style="color:#fff;font-size:24px"><span id="total-grand-aud-2x">-</span> <span style="font-size:14px;color:var(--tram-gold-soft)" id="total-grand-sgd-2x">-</span></div><div class="detail" style="color:rgba(255,255,255,.6)">For 2 People</div></div>
+        </div>
       </div>
     </div>
 

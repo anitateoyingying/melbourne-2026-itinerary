@@ -1083,6 +1083,7 @@ function renderDays() {
       if (a.img) {
         html += `<img class="activity-card-img" src="${a.img}" alt="${a.title}" loading="lazy" onerror="this.classList.add('error');this.outerHTML='<div class=\\'activity-card-img error\\'>🏞️</div>'">`;
       }
+      html += '<div class="activity-card-content">';
       html += '<div class="activity-body">';
       html += `<h3>${a.title}</h3>`;
       if (a.atmosphere && a.atmosphere.length) {
@@ -1106,7 +1107,7 @@ function renderDays() {
       if (a.map) links += `<a href="${a.map}" target="_blank" rel="noopener" class="action-link map">📍 Map</a>`;
       if (a.booking) links += `<a href="${a.booking}" target="_blank" rel="noopener" class="action-link book">📝 Reserve</a>`;
       if (links) html += `<div class="action-links">${links}</div>`;
-      html += '</div></div>';
+      html += '</div></div></div>';
     });
     html += '</div>';
     const totalAUD = d.dayCost.transport + d.dayCost.food + d.dayCost.activities + d.dayCost.accommodation;
@@ -1141,6 +1142,70 @@ function calculateTripTotals() {
   document.getElementById('total-grand-sgd-2x').textContent = `~S$${toSGD(grand * 2)}`;
 }
 
+function initDayCounter() {
+  const TRIP_START = new Date(2026, 4, 25);
+  const TRIP_END = new Date(2026, 5, 3);
+  const now = new Date();
+  const el = document.getElementById('day-counter');
+  if (!el) return;
+
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const startOfTrip = new Date(TRIP_START.getFullYear(), TRIP_START.getMonth(), TRIP_START.getDate());
+  const endOfTrip = new Date(TRIP_END.getFullYear(), TRIP_END.getMonth(), TRIP_END.getDate());
+
+  if (startOfToday < startOfTrip) {
+    const daysUntil = Math.ceil((startOfTrip - startOfToday) / 86400000);
+    el.textContent = `${daysUntil} day${daysUntil === 1 ? '' : 's'} until departure`;
+  } else if (startOfToday <= endOfTrip) {
+    const dayNum = Math.floor((startOfToday - startOfTrip) / 86400000) + 1;
+    el.textContent = `Day ${dayNum} of 10`;
+    el.classList.add('active');
+    const navBtn = document.querySelector(`.nav-btn[data-day="${dayNum}"]`);
+    if (navBtn) navBtn.classList.add('active');
+  } else {
+    el.textContent = 'Trip completed';
+  }
+}
+
+function initAccomSelector() {
+  const STORAGE_KEY = 'melb2026_accom';
+  const cards = document.querySelectorAll('.accom-card[data-accom]');
+  const deselect = document.getElementById('accom-deselect');
+  if (!cards.length) return;
+
+  function apply(selected) {
+    cards.forEach(c => {
+      c.classList.remove('selected', 'greyed');
+      c.style.pointerEvents = '';
+      if (selected && c.dataset.accom === selected) {
+        c.classList.add('selected');
+      } else if (selected) {
+        c.classList.add('greyed');
+      }
+    });
+    if (deselect) deselect.style.display = selected ? 'inline-block' : 'none';
+  }
+
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) apply(saved);
+
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      if (card.classList.contains('selected')) return;
+      localStorage.setItem(STORAGE_KEY, card.dataset.accom);
+      apply(card.dataset.accom);
+    });
+  });
+
+  if (deselect) {
+    deselect.addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_KEY);
+      apply(null);
+    });
+  }
+}
+
 function initChecklist() {
   const STORAGE_KEY = 'melb2026_bookings';
   const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
@@ -1148,7 +1213,7 @@ function initChecklist() {
 
   const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   checkboxes.forEach(cb => {
-    if (saved[cb.id]) cb.checked = true;
+    if (saved[cb.dataset.booking]) cb.checked = true;
   });
 
   function updateProgress() {
@@ -1163,7 +1228,7 @@ function initChecklist() {
   checkboxes.forEach(cb => {
     cb.addEventListener('change', () => {
       const state = {};
-      checkboxes.forEach(c => { if (c.checked) state[c.id] = true; });
+      checkboxes.forEach(c => { if (c.checked) state[c.dataset.booking] = true; });
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       updateProgress();
     });
@@ -1176,6 +1241,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSidebar();
   renderDays();
   calculateTripTotals();
+  initDayCounter();
+  initAccomSelector();
   initChecklist();
   document.getElementById('hamburger').addEventListener('click', () => {
     document.querySelector('.sidebar').classList.toggle('open');
